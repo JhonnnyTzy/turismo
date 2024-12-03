@@ -51,48 +51,6 @@
     </div>
 </div>
 
-<section class="container-collage">
-    <article class="item item-1" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-        <div class="contenido">
-            <div class="texto">
-                <h3>El Majestuoso Illimani</h3>
-                <p>Ciudad Marravilla</p>
-            </div>
-
-            <a href="la-paz.html">Descubre La Paz</a>
-        </div>
-    </article>
-    <article class="item item-2" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-        <div class="contenido">
-            <div class="texto">
-                <h3>El Majestuoso Illimani</h3>
-                <p>Ciudad Marravilla</p>
-            </div>
-
-            <a href="la-paz.html">Descubre La Paz</a>
-        </div>
-    </article>
-    <article class="item item-3" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-        <div class="contenido">
-            <div class="texto">
-                <h3>El Majestuoso Illimani</h3>
-                <p>Ciudad Marravilla</p>
-            </div>
-
-            <a href="la-paz.html">Descubre La Paz</a>
-        </div>
-    </article>
-    <article class="item item-4" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-        <div class="contenido">
-            <div class="texto">
-                <h3>El Majestuoso Illimani</h3>
-                <p>Ciudad Marravilla</p>
-            </div>
-
-            <a href="la-paz.html">Descubre La Paz</a>
-        </div>
-    </article>
-</section>
 
 <section>
 

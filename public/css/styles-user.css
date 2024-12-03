@@ -1,0 +1,124 @@
+.menu_main {
+    width: 100%;
+    background-color: #1d1d1d00;
+    height: 60px;
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+
+    .logo_container {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 1.5rem;
+    }
+
+    .menu_container {
+        .menu {
+            list-style: none;
+
+            .menu_item {
+                color: #ffffff;
+                text-decoration: none;
+                margin: 0 20px;
+                font-size: 1rem;
+                padding: 10px 10px;
+
+                &:hover {
+                    border-bottom: solid 1px #ffffff;
+                }
+            }
+        }
+    }
+
+    .inicio_session {
+        background-color: #ffffff;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+
+        p,
+        a {
+            margin: 0px 10px;
+        }
+
+        img {
+            margin: 5px;
+        }
+    }
+}
+
+.menu_main.scrolled {
+    background-color: #ffffff !important;
+    box-shadow: 1px 1px 20px 1px var(--color-difuminado);
+
+    .logo_container {
+        h2 {
+            color: #000000 !important;
+            font-weight: bold;
+        }
+    }
+    .menu_container {
+        .menu {
+            .menu_item {
+                color: #000000 !important;
+
+                &:hover {
+                    color: #3d3d3d !important;
+                    border-bottom: solid 2px #000000;
+                }
+            }
+        }
+    }
+
+
+}
+
+/* header del inicio*/
+.header_main {
+    height: 100vh;
+
+    .item_carusel {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+
+        .fondo {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 1.5rem;
+            }
+
+            a {
+                background: #ffffff;
+                color: black;
+                padding: 20px 30px;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                margin-top: 10px;
+
+                &:hover {
+                    border: solid 1px #ffffff;
+                    background: #ffffff00;
+                    color: #ffffff;
+
+                }
+            }
+        }
+    }
+}

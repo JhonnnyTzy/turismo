@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>JOMI WASI</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Ionicons -->
@@ -28,44 +28,68 @@ session_start();
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-
-    <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/footer-css.css">
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
+    <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/footer-css.css">
+    <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles-user.css">
+
 </head>
 
-<body class="hold-transition sidebar-mini">
-
-    <div class="wrapper">
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?php echo URL_RESOURCES; ?>adminlte/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-        </div>
-        <!-- Navbar -->
-        <?php include __DIR__ . '/partials/navbar.php'; ?>
-
-        <!-- Sidebar -->
-        <?php include __DIR__ . '/partials/sidebar.php'; ?>
-
-        <div class="content-wrapper bg-white">
-            <?php if (isset($user['rol'])): ?>
-                <?php if ($user['rol'] == 'ADMIN') : ?>
-                    <div id="content">
-                        <h1>hola</h1>
-                    </div>
-                <?php else: ?>
-                    <?php include __DIR__ . '/Menu/Inicio.php'; ?>
-                <?php endif; ?>
-            <?php else: ?>
-                <?php include __DIR__ . '/Menu/Inicio.php'; ?>
-            <?php endif; ?>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="content-wrapper">
-            <?php include __DIR__ . '/partials/footer.php'; ?>
-        </div>
+<body>
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="<?php echo URL_RESOURCES; ?>adminlte/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
+    <!-- Navbar -->
+    <?php include __DIR__ . '/partials/navbar.php'; ?>
+
+    <div class="content" id="content">
+        <?php include __DIR__ . '/partials/header.php'; ?>
+
+        <section class="container-collage">
+            <article class="item item-1" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
+                <div class="contenido">
+                    <div class="texto">
+                        <h3>El Majestuoso Illimani</h3>
+                        <p>Ciudad Marravilla</p>
+                    </div>
+
+                    <a href="la-paz.html">Descubre La Paz</a>
+                </div>
+            </article>
+            <article class="item item-2" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
+                <div class="contenido">
+                    <div class="texto">
+                        <h3>El Majestuoso Illimani</h3>
+                        <p>Ciudad Marravilla</p>
+                    </div>
+
+                    <a href="la-paz.html">Descubre La Paz</a>
+                </div>
+            </article>
+            <article class="item item-3" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
+                <div class="contenido">
+                    <div class="texto">
+                        <h3>El Majestuoso Illimani</h3>
+                        <p>Ciudad Marravilla</p>
+                    </div>
+
+                    <a href="la-paz.html">Descubre La Paz</a>
+                </div>
+            </article>
+            <article class="item item-4" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
+                <div class="contenido">
+                    <div class="texto">
+                        <h3>El Majestuoso Illimani</h3>
+                        <p>Ciudad Marravilla</p>
+                    </div>
+
+                    <a href="la-paz.html">Descubre La Paz</a>
+                </div>
+            </article>
+        </section>
+
+
+    </div>
+
 
 
     <!-- jQuery -->
@@ -102,8 +126,8 @@ session_start();
     <!-- Animacion footer -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
-    <script script src="<?php echo URL_RESOURCES; ?>js/script_base.js"></script>
+
+    <script script src="<?php echo URL_RESOURCES; ?>js/scripts-user.js"></script>
 
 </body>
 

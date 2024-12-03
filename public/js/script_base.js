@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   menuLinks.forEach((link) => {
     link.addEventListener("click", async (e) => {
       e.preventDefault();
+
       const url = link.dataset.url;
+
       if (!url) {
         console.error("No se encontró la URL en data-url.");
         return;
@@ -107,8 +109,6 @@ function mostrar_toast(resultado, mostrar_notificacion) {
 }
 
 function reload_script(dom) {
-
-
   $(dom).find(".select2").select2();
   $(dom).find(".select2bs4").select2({
     theme: "bootstrap4",
