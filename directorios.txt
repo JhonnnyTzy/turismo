@@ -1,0 +1,21 @@
+Descripción de Carpetas
+/app: Contiene la lógica principal de la aplicación.
+
+/controllers: Interactúan con los modelos y envían datos a las vistas.
+/models: Representan las tablas de la base de datos.
+/views: Plantillas PHP o HTML para mostrar contenido al usuario.
+/middlewares: Controlan la lógica previa a la ejecución de una acción, como verificar roles o autenticación.
+/services: Lógica compartida o utilidades específicas (e.g., envíos de correos, generación de reportes).
+/config: Archivos de configuración global (conexión a BD, constantes, etc.).
+
+/core: Contiene la base del framework simple:
+App.php: Clase principal que inicializa la aplicación.
+Router.php: Maneja las rutas y redirecciones.
+Request.php: Abstracción para manejar datos entrantes.
+Response.php: Facilita el envío de respuestas HTTP.
+
+/public: Directorio público para archivos accesibles desde el navegador.
+
+index.php: Punto de entrada de la aplicación.
+/routes: Define todas las rutas disponibles en la aplicación.
+

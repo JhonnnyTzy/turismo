@@ -1,0 +1,14 @@
+RewriteEngine On
+Options -Indexes
+
+# Establecer la base del directorio para las reescrituras
+RewriteBase /turismo/
+
+# Redireccionar todas las solicitudes a index.php excepto para archivos y directorios reales
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
