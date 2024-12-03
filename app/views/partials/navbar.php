@@ -8,11 +8,13 @@
     <div class="menu_container">
         <ul class="menu">
             <li><a href="" class="menu_item menu-link">Inicio</a></li>
-            <li><a href="contactos" class="menu_item menu-link"
+            <li><a href="" class="menu_item menu-link"
                     data-url="view/contactos"
                     data-ajax="true">Contactos</a></li>
             <li><a href="" class="menu_item">Paquetes</a></li>
-            <li><a href="" class="menu_item">Acerca de</a></li>
+            <li><a href="" class="menu_item menu-link"
+                    data-url="view/acercaDe"
+                    data-ajax="true">Acerca de</a></li>
         </ul>
     </div>
     <div class="inicio_session">

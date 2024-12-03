@@ -269,3 +269,37 @@
 .mapa{
     margin-top: 50px;
 }
+
+/* STYLES ACERCA DE */
+
+.contenedor_perfiles{
+    width: 60%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 40px;
+    .perfil{
+        width: 250px;
+        display: grid;
+        place-items: center;
+        box-shadow: 1px 1px 10px 5px #c4c2c2;
+        width: 100%;
+        padding: 25px;
+        img{
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .nombre{
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .contacto{
+            background-color: #1965d8;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    }
+}

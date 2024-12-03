@@ -1,9 +1,7 @@
 <div class="header_contactos">
     <div class="contenido_contactos">
-
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor dolorem</h1>
     </div>
-
 </div>
 <div class="contenedor_principal">
 
