@@ -1,15 +1,20 @@
-<?php 
+<?php
 
 namespace App\Models;
+
 use Config\Database;
-class Paquete{
+
+class Paquete
+{
     private $conexion;
-    public function __construct(){
+    public function __construct()
+    {
         $db = new Database();
         $this->conexion = $db->getConnection();
     }
 
-    public function registrarPaquete($data){
+    public function registrarPaquete($data)
+    {
         $sql = "INSERT INTO paquete (nombre, descripcion, departamento_origen, lugar_salida, destino_id, transporte_salida, transporte_regreso, alojamiento_id, id_tipo_paquete, precio_total, duracion, plaza_disponible, informacion_adicional) 
         VALUES (:nombre, :descripcion, :departamento_origen, :lugar_salida, :destino_id, :transporte_salida, :transporte_regreso, :alojamiento_id, :id_tipo_paquete, :precio_total, :duracion, :plaza_disponible, :informacion_adicional)";
 
@@ -29,15 +34,22 @@ class Paquete{
         $stmt->bindParam(':informacion_adicional', $data['informacion_adicional']);
 
         return $stmt->execute();
-            
     }
 
-    public function listarTiposPaquetes(){
+    public function listarTiposPaquetes()
+    {
         $sql = "SELECT * FROM tipo_paquete";
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-}
 
-?>
+    public function obtener_paquetes()
+    {
+        $stmt = $this->conexion->prepare("CALL obtener_paquetes();");
+        $stmt->execute();
+        $resultados =  $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+}

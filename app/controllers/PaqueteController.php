@@ -1,11 +1,14 @@
-<?php 
+<?php
+
 namespace App\Controllers;
 
 use App\Models\Paquete;
 
-class PaqueteController {
-    public function registrar($data) {
-        
+class PaqueteController
+{
+    public function registrar($data)
+    {
+
         $paquete = new Paquete();
         $success = $paquete->registrarPaquete($data);
 
@@ -23,10 +26,10 @@ class PaqueteController {
             echo json_encode(['success' => false, 'message' => 'Error al registrar el paquete.']);
         }
         exit();
-
     }
 
-    public function mostrarFormRegistrar() {
+    public function mostrarFormRegistrar()
+    {
 
         $paquete = new Paquete();
         $tiposPaquetes = $paquete->listarTiposPaquetes();
@@ -37,8 +40,20 @@ class PaqueteController {
 
         header('Content-Type: text/html; charset=utf-8');
         echo $html;
+    }
 
+
+    public function obtener_paquetes()
+    {
+        $paquete = new Paquete();
+        $paquetes = $paquete->obtener_paquetes();
+
+        ob_start();
+        require_once __DIR__ . '/../views/Paquetes/Paquete.php';
+        $html = ob_get_clean();
+
+        header('Content-Type: application/json');
+
+        echo json_encode(['success' => true, 'data' => $html]);
     }
 }
-
-?>

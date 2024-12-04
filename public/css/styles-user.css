@@ -19,6 +19,8 @@
     }
 
     .menu_container {
+        width: 60%;
+
         .menu {
             list-style: none;
 
@@ -37,19 +39,24 @@
     }
 
     .inicio_session {
-        background-color: #ffffff;
-        border-radius: 30px;
+        width: 20%;
         display: flex;
-        align-items: center;
+        .session {
+            background-color: #ffffff;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
 
-        p,
-        a {
-            margin: 0px 10px;
+            p,
+            a {
+                margin: 0px 10px;
+            }
+
+            img {
+                margin: 5px;
+            }
         }
 
-        img {
-            margin: 5px;
-        }
     }
 }
 
@@ -229,7 +236,7 @@
 
     .formulario {
         width: 50%;
-        
+
         .formulario_content {
             display: flex;
             flex-direction: column;
@@ -237,6 +244,7 @@
             justify-items: center;
             align-items: center;
             height: 100%;
+
             .fila {
                 display: flex;
                 width: 100%;
@@ -266,40 +274,83 @@
     }
 }
 
-.mapa{
+.mapa {
     margin-top: 50px;
 }
 
 /* STYLES ACERCA DE */
 
-.contenedor_perfiles{
+
+.header_acercade {
+    height: 100vh;
+    background-image: url(../images/fondo_acercade.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .contenido_acercade {
+        background-color: #31313175;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #ffffff
+    }
+}
+
+.contenedor_perfiles {
     width: 60%;
     margin: 50px auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 40px;
-    .perfil{
+
+    .perfil {
         width: 250px;
         display: grid;
         place-items: center;
         box-shadow: 1px 1px 10px 5px #c4c2c2;
         width: 100%;
         padding: 25px;
-        img{
+
+        img {
             border-radius: 50%;
             width: 150px;
             height: 150px;
         }
-        .nombre{
+
+        .nombre {
             margin-top: 10px;
             font-weight: bold;
             font-size: 1.2rem;
         }
-        .contacto{
+
+        .contacto {
             background-color: #1965d8;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 10px;
         }
+    }
+}
+
+/* ESTILOS PAQUETES */
+
+.header_paquetes {
+    height: 100vh;
+    background-image: url(../images/fondo_acercade.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .contenido_paquetes {
+        background-color: #31313175;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #ffffff
     }
 }

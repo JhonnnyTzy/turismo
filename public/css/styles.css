@@ -18,6 +18,12 @@
     z-index: 10;
 }
 
+.menu-link.active {
+    font-weight: bold;
+    color: #007bff; /* Azul, por ejemplo */
+    text-decoration: underline;
+  }
+  
 
 .p_sidebar {
     position: fixed !important;
