@@ -1,3 +1,12 @@
+<?php
+session_start();
+  if(isset($_SESSION['user'])){
+
+    header('Location: '.HTTP_BASE);
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,7 +42,7 @@
 <body class="hold-transition login-page">
 
   <?php
-  session_start();
+
   if (isset($_SESSION['toast'])):
   ?>
     <div class="toast-container d-flex justify-content-center">

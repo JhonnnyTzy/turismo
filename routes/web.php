@@ -32,6 +32,7 @@ $app->router->add('POST', '/login', function ($data) {
 
     $controller = new UsuarioController();
     $controller->login($data);
+    
 });
 
 $app->router->add('GET', '/logout', function () {

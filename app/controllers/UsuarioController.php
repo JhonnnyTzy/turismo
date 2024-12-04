@@ -29,11 +29,12 @@ class UsuarioController
         $usuario = new Usuario();
         $authenticatedUser = $usuario->authenticate($data['usuario'], $data['contrasena']);
         session_start();
-        
-        $rol = $authenticatedUser['id_rol']==1 ? 'ADMIN' : 'USUARIO';
+
+
+        $rol = $authenticatedUser['id_rol'] == 1 ? 'ADMIN' : 'USUARIO';
 
         if ($authenticatedUser) {
-            // Si la autenticación es exitosa, enviar los datos del usuario
+
             $_SESSION['user'] = [
                 'id' => $authenticatedUser['id'],
                 'nombre' => $authenticatedUser['nombre'],

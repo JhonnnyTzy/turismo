@@ -376,6 +376,7 @@
         height: 500px;
         background-color: #ffffff;
         box-shadow: 1px 1px 10px 5px #c4c2c2;
+
         img {
             width: 100%;
             height: 40%;
@@ -477,6 +478,7 @@
                     border-radius: 20px;
                     text-align: center;
                     border: none;
+
                     &:hover {
                         background-color: #0b71ff;
                     }
@@ -502,4 +504,103 @@
     100% {
         transform: scale(1)
     }
+}
+
+
+/* estilos paquetes compra*/
+.header_compra {
+    height: 50vh;
+    background-image: url(../images/fondo_acercade.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .contenido_compra {
+        background-color: #31313175;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #ffffff
+    }
+}
+
+.contenedor_compra {
+    width: 80%;
+    background-color: white;
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+
+    .contenedor_main {
+        width: 80%;
+        .contenedor_partes {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            .parte_carousel {
+                width: 50%;
+                padding: 25px;
+
+                .carousel {
+                    width: 100%;
+                    height: 100%;
+
+                    .imagen {
+                        width: 100%;
+                        height: 400px;
+                        background-position: center;
+                        background-size: contain;
+                    }
+                }
+
+            }
+
+            .parte_info {
+                width: 50%;
+                padding: 25px;
+            }
+        }
+        
+    }
+    .contenedor_compra{
+        position: sticky;
+        top: 100px;
+        background-color: #f7f7f7;
+        width: 20%;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px 5px #c4c2c2;
+        .botones{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .item{
+                
+                color: #ffffff;
+                margin: 10px 0;
+                border-radius: 25px;
+                text-align: center;
+                padding: 10px 0;
+                
+            }
+            .reserva{
+                background-color: #d8a219;
+            }
+            .compra{
+                background-color: #388c07;
+            }
+        }
+        
+        
+    }
+
 }

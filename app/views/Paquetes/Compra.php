@@ -1,61 +1,67 @@
-<div class="contenedor_compra">
-    <div class="contenedor_destino">
-        <div class="destino_carousel">
-            <!-- /.card-header -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="item_carusel" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-                            <div class="fondo">
-                                <h1>El Majestuoso Illimani</h1>
-                                <p>Admira la imponente montaña que vigila la ciudad de La Paz, un símbolo de orgullo paceño.</p>
-                                <a href="la-paz.html">Descubre La Paz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="item_carusel" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/cristo_concordia.JPG')">
-                            <div class="fondo">
-                                <h1>Cristo de la Concordia</h1>
-                                <p>Visita una de las estatuas de Cristo más grandes del mundo, orgullo de Cochabamba.</p>
-                                <a href="cochabamba.html">Explora Cochabamba</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="item_carusel" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/CATEDRAL.JPG')">
-                            <div class="fondo">
-                                <h1>Catedral Metropolitana</h1>
-                                <p>Descubre la historia y arquitectura de este ícono en el corazón de Santa Cruz.</p>
-                                <a href="santa-cruz.html">Conoce Santa Cruz</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<?php
 
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-custom-icon" aria-hidden="true">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-custom-icon" aria-hidden="true">
-                        <i class="fas fa-chevron-right"></i>
-                    </span>
-                    <span class="sr-only">Next</span>
-                </a>
+$imagenes = json_decode($paquete['d_imagenes'], true); // Decodificar el JSON de imágenes
+$imagen_decodificada = json_decode($imagenes, true); // array de imagenes
+foreach ($imagen_decodificada as $key => $value) {
+    $info = pathinfo($value);
+    $imagen_decodificada[$key] = $info['filename'] . ".webp";
+}
+$imagenes_a = json_decode($paquete['imagenes'], true); // Decodificar el JSON de imágenes
+$imagen_decodificada_a = json_decode($imagenes_a, true); // array de imagenes
+foreach ($imagen_decodificada_a as $key => $value) {
+    $info = pathinfo($value);
+    $imagen_decodificada_a[$key] = $info['filename'] . ".webp";
+}
+?>
+
+<div class="header_compra">
+    <div class="contenido_compra">
+
+    </div>
+</div>
+
+<div class="contenedor_compra">
+
+    <div class="contenedor_main">
+        <h2>DESTINO</h2>
+        <div class="contenedor_partes">
+
+            <div class="parte_carousel">
+                <!-- /.card-header -->
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                    <ol class="carousel-indicators">
+                        <?php foreach ($imagen_decodificada as $key => $value): ?>
+                            <li data-target="#carouselExampleIndicators" data-slide-to=<?php echo $key ?> class=<?php $key == 0 ? "active" : "" ?>></li>
+                        <?php endforeach; ?>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php foreach ($imagen_decodificada as $key => $value): ?>
+                            <div class="carousel-item <?php echo $key == 0 ? "active" : "" ?>">
+                                <img src="<?php echo URL_RESOURCES; ?>/uploads/Destino/<?php echo $value; ?>" alt="imagen" class="imagen">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-custom-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-custom-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div>
-            <div class="destino_info">
+            <div class="parte_info">
+
                 <div class="destino_mas_info">
                     <h2><?php echo htmlspecialchars($paquete['d_nombre']); ?></h2>
+                    <p><strong>Duracion:</strong> <?php echo htmlspecialchars($paquete['p_duracion']); ?></p>
                     <p><strong>Descripción:</strong> <?php echo htmlspecialchars($paquete['d_descripcion']); ?></p>
                     <p><strong>Departamento:</strong> <?php echo htmlspecialchars($paquete['d_departamento']); ?></p>
                     <p><strong>Coordenadas:</strong> <a href="<?php echo htmlspecialchars($paquete['d_coordenadas']); ?>" target="_blank">Ver en Google Maps</a></p>
@@ -64,7 +70,76 @@
                     <p><strong>Atracciones:</strong> <?php echo htmlspecialchars($paquete['atracciones']); ?></p>
                 </div>
 
+
+            </div>
+        </div>
+
+        <h2>ALOJAMIENTO</h2>
+        <div class="contenedor_partes">
+            <div class="parte_info">
+                <div class="destino_mas_info">
+                    <h2><?php echo htmlspecialchars($paquete['a_nombre']); ?></h2>
+                    <p><strong>Descripción:</strong> <?php echo htmlspecialchars($paquete['a_descripcion']); ?></p>
+                    <p><strong>Tipo:</strong> <?php echo htmlspecialchars($paquete['a_tipo']); ?></p>
+                    <p><strong>Coordenadas:</strong> <a href="<?php echo htmlspecialchars($paquete['a_url_maps']); ?>" target="_blank">Ver en Google Maps</a></p>
+                    <p><strong>Ubicacion:</strong> <?php echo htmlspecialchars($paquete['a_ubicacion']); ?></p>
+                    <p><strong>Servicios:</strong> <?php echo htmlspecialchars($paquete['a_servicios']); ?></p>
+                    <p><strong>Atracciones:</strong> <?php echo htmlspecialchars($paquete['atracciones']); ?></p>
+                    <p><strong>Transporte:</strong> <?php echo htmlspecialchars($paquete['t_tipo']); ?></p>
+                    <p><strong>Codigo:</strong> <?php echo htmlspecialchars($paquete['t_codigo']); ?></p>
+                </div>
+
+            </div>
+
+            <div class="parte_carousel">
+
+                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+
+                    <ol class="carousel-indicators">
+                        <?php foreach ($imagen_decodificada_a as $key => $value): ?>
+                            <li data-target="#carouselExampleIndicators" data-slide-to=<?php echo $key ?> class=<?php $key == 0 ? "active" : "" ?>></li>
+                        <?php endforeach; ?>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php foreach ($imagen_decodificada_a as $key => $value): ?>
+                            <div class="carousel-item <?php echo $key == 0 ? "active" : "" ?>">
+                                <img src="<?php echo URL_RESOURCES; ?>/uploads/Alojamiento/<?php echo $value; ?>" alt="imagen" class="imagen">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+                        <span class="carousel-control-custom-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+                        <span class="carousel-control-custom-icon" aria-hidden="true">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="contenedor_compra">
+        <div class="compra">
+            <h2>COMPRAR</h2>
+            <p class="detalles"><b>Destino:</b> <?php echo htmlspecialchars($paquete['d_nombre']); ?></p>
+            <p class="detalles"><b>Alojamiento:</b> <?php echo htmlspecialchars($paquete['a_nombre']); ?></p>
+            <p class="detalles"><b>Transporte:</b> <?php echo htmlspecialchars($paquete['t_tipo']); ?></p>
+            <p class="precio"><?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?></p>
+            <div class="botones">
+                <a href="" class="item reserva">RESERVAR</a>
+                <a href="" class="item compra">COMPRAR</a>
+            </div>
+
+        </div>
+
+    </div>
 </div>
+
+<?php include ROOT_APP . 'views/partials/footer.php'; ?>

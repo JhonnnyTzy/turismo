@@ -1,6 +1,13 @@
 <?php
 
+
+// Evitar almacenamiento en caché
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -128,6 +135,16 @@ session_start();
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script script src="<?php echo URL_RESOURCES; ?>js/scripts-user.js"></script>
+
+    <script>
+        // Añadir una entrada al historial al cargar la página
+        window.history.pushState({
+            page: 1
+        }, "home", "/turismo/home");
+
+        
+    </script>
+
 
 </body>
 
