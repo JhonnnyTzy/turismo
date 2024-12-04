@@ -18,4 +18,8 @@ $app->router->add('GET', '/view/paquetes/obtener', function () {
     $controller->obtener_paquetes();
 });
 
+$app->router->add('GET', '/view/paquetes/detalle/:id', function ($id) {
+    $controller = new PaqueteController();
+    $controller->obtenerInfoPaquete($id);
+});
 ?>

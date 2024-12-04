@@ -94,17 +94,29 @@ async function enviar_solicitud(
 function reload_script(dom) {
 
   $(dom).find(".contenedor_paquetes").each(function () {
-
+    const contenedor = $(this); // Selecciona el contenedor actual
     enviar_solicitud('view/paquetes/obtener', 'GET', {}, false, function (result) {
 
       if (result.success) {
         const paquetes = result.data;
         $('.contenedor_paquetes').html(paquetes);
-      }else{
+      } else {
         $('.contenedor_paquetes').html("error en cargar paquetes");
       }
-
     });
+
+    contenedor.on('click', '#btn_detalle', function (e) {
+      const id = $(this).data("id"); // Obtén el atributo data-id del botón
+      enviar_solicitud(`view/paquetes/detalle/${id}`, 'GET', {}, false, function (result) {
+        if (result.success) {
+          const paquete = result.data;
+          $('#content').html(paquete);
+        } else {
+          $('#content').html("error en cargar compra");
+        }
+      });
+    });
+
 
   });
 

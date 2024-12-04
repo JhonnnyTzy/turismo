@@ -56,4 +56,18 @@ class PaqueteController
 
         echo json_encode(['success' => true, 'data' => $html]);
     }
+
+    public function obtenerInfoPaquete($id)
+    {
+        $pqt = new Paquete();
+        $paquete = $pqt->obtenerInfoPaquete($id);
+
+        ob_start();
+        require_once __DIR__ . '/../views/Paquetes/Compra.php';
+        $html = ob_get_clean();
+
+        header('Content-Type: application/json');
+
+        echo json_encode(['success' => true, 'data' => $html]);
+    }
 }

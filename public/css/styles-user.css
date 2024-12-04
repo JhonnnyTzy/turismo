@@ -41,6 +41,7 @@
     .inicio_session {
         width: 20%;
         display: flex;
+
         .session {
             background-color: #ffffff;
             border-radius: 30px;
@@ -280,7 +281,6 @@
 
 /* STYLES ACERCA DE */
 
-
 .header_acercade {
     height: 100vh;
     background-image: url(../images/fondo_acercade.jpeg);
@@ -337,6 +337,13 @@
 
 /* ESTILOS PAQUETES */
 
+.leyenda {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 50px;
+}
+
 .header_paquetes {
     height: 100vh;
     background-image: url(../images/fondo_acercade.jpeg);
@@ -352,5 +359,147 @@
         align-items: center;
         text-align: center;
         color: #ffffff
+    }
+}
+
+.contenedor_paquetes {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-gap: 40px;
+    color: #ffffff;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+
+    .paquete {
+        height: 500px;
+        background-color: #ffffff;
+        box-shadow: 1px 1px 10px 5px #c4c2c2;
+        img {
+            width: 100%;
+            height: 40%;
+        }
+
+        .ubicacion {
+            width: 100%;
+            color: #000000;
+            margin: 0px 0px 10px 0px;
+            padding: 10px 0px 0px 20px;
+            display: flex;
+            justify-content: space-between;
+
+            .nombre_dep {
+                margin: 0;
+                width: 60%;
+
+                .nombre {
+                    margin: 0;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    line-height: 1;
+                }
+            }
+
+            .departamento {
+                width: 40%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .p_departamento {
+                    width: 100%;
+                    margin: 0;
+                    background-color: #8037e7;
+                    color: #ffffff;
+                    border-radius: 20px 0px 0px 20px;
+                    padding: 10px 0px;
+                }
+            }
+
+
+        }
+
+        .contenido {
+            width: 100%;
+            height: 40%;
+            color: #000000;
+            margin: 0;
+            padding: 0px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            p {
+                margin: 0;
+            }
+
+            .info {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+
+                .tipo_paquete {
+                    width: 60%;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                }
+
+                .precio {
+
+                    color: #479c23;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+            }
+
+            .descripcion {
+                color: #7c7c7c;
+                width: 100%;
+                font-size: 1rem;
+                overflow: hidden;
+                white-space: wrap;
+                text-overflow: ellipsis;
+            }
+
+            .btn_paquete {
+                width: 100%;
+                display: flex;
+                margin-top: 20px;
+                justify-content: center;
+
+                .detalle {
+                    width: 50%;
+                    background-color: #1965d8;
+                    color: #ffffff;
+                    padding: 10px 0px;
+                    border-radius: 20px;
+                    text-align: center;
+                    border: none;
+                    &:hover {
+                        background-color: #0b71ff;
+                    }
+                }
+            }
+
+
+        }
+
+    }
+}
+
+
+.scale-up-center {
+    animation: scale-up-center 2s;
+}
+
+@keyframes scale-up-center {
+    0% {
+        transform: scale(.5)
+    }
+
+    100% {
+        transform: scale(1)
     }
 }

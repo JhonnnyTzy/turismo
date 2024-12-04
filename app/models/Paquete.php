@@ -52,4 +52,14 @@ class Paquete
 
         return $resultados;
     }
+
+    public function obtenerInfoPaquete($id)
+    {
+        $stmt = $this->conexion->prepare("CALL oi_paquete(:id);");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $resultado =  $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $resultado;
+    }
 }
