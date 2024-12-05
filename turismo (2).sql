@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2024 at 02:17 AM
+-- Generation Time: Dec 05, 2024 at 03:53 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,6 +30,23 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `obtener_paquetes` ()   BEGIN
 	FROM paquete P
 	INNER JOIN destino D ON P.destino_id = D.id
 	INNER JOIN tipo_paquete TP ON P.id_tipo_paquete = TP.id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtener_ventas` ()   BEGIN
+    SELECT
+		V.id,
+        U.usuario AS usuario,
+        TP.nombre AS tipo_paquete,
+        D.destino AS destino,
+        D.alojamiento AS alojamiento,
+        D.transporte AS transporte,
+        D.precio AS precio,
+        V.codigo_secreto AS codigo_secreto
+    FROM venta V
+    INNER JOIN detalle_venta D ON V.id = D.venta_id
+    INNER JOIN usuarios U ON V.usuario_id = U.id_usuario
+    INNER JOIN paquete P ON V.paquete_id = P.id
+    INNER JOIN tipo_paquete TP ON P.id_tipo_paquete = TP.id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `oi_paquete` (IN `paquete_id` INT)   BEGIN
@@ -202,7 +219,8 @@ CREATE TABLE `detalle_venta` (
 --
 
 INSERT INTO `detalle_venta` (`id`, `destino`, `alojamiento`, `transporte`, `venta_id`, `cantidad_personas`, `precio`) VALUES
-(1, 'Camino De La Muerte', 'Hotel Presidente', 'AUTOBUS', 3, 5, '200.00');
+(1, 'Camino De La Muerte', 'Hotel Presidente', 'AUTOBUS', 3, 5, '200.00'),
+(2, 'Parque Nacional Amboró', 'Los Tajibos Hotel & Convention Center', 'AUTOBUS', 6, 5, '100.00');
 
 -- --------------------------------------------------------
 
@@ -370,7 +388,8 @@ CREATE TABLE `venta` (
 INSERT INTO `venta` (`id`, `usuario_id`, `paquete_id`, `codigo_secreto`, `fecha_venta`) VALUES
 (1, 2, 6, 'LP2GANCv1g', '2024-12-05 02:09:48'),
 (2, 2, 6, 'hq2WeKUcbU', '2024-12-05 02:13:10'),
-(3, 2, 6, 'eTYZ4poqnF', '2024-12-05 02:14:19');
+(3, 2, 6, 'eTYZ4poqnF', '2024-12-05 02:14:19'),
+(6, 2, 7, '1KQcKhs2ED', '2024-12-05 02:56:00');
 
 --
 -- Indexes for dumped tables
@@ -462,7 +481,7 @@ ALTER TABLE `destino`
 -- AUTO_INCREMENT for table `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `paquete`
@@ -498,7 +517,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
