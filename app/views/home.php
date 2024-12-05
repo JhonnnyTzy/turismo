@@ -32,9 +32,7 @@ session_start();
 
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
+    
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/footer-css.css">
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles-user.css">
@@ -45,6 +43,27 @@ session_start();
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="<?php echo URL_RESOURCES; ?>adminlte/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
+
+    <div class="modal fade" id="modal-default" style="transition: transform 0.5s ease-out, opacity 0.5s ease-out;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <h4 class="modal-title" id="modal-title">Default Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <p>Contenido dinámico aquí...</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="modal-confirm">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Navbar -->
     <?php include __DIR__ . '/partials/navbar.php'; ?>
 
@@ -112,19 +131,7 @@ session_start();
         $.widget.bridge('uibutton', $.ui.button)
     </script>
 
-    <!-- DataTables  & Plugins -->
-    <script src="<?php echo URL_RESOURCES; ?>adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/jszip/jszip.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="<?php echo URL_RESOURCES_ADM; ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="<?php echo URL_RESOURCES; ?>adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 
 
     <!-- AdminLTE App -->
@@ -141,8 +148,6 @@ session_start();
         window.history.pushState({
             page: 1
         }, "home", "/turismo/home");
-
-        
     </script>
 
 

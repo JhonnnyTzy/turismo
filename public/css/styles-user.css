@@ -566,7 +566,7 @@
         }
         
     }
-    .contenedor_compra{
+    .contenedor_comprar{
         position: sticky;
         top: 100px;
         background-color: #f7f7f7;
@@ -579,10 +579,20 @@
         margin-top: 50px;
         border-radius: 5px;
         box-shadow: 1px 1px 10px 5px #c4c2c2;
+        .detalles{
+            margin: 0px;
+        }
+        .precio{
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #57b82d;
+        }
         .botones{
             width: 100%;
             display: flex;
             flex-direction: column;
+            
             .item{
                 
                 color: #ffffff;

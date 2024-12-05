@@ -125,16 +125,26 @@ foreach ($imagen_decodificada_a as $key => $value) {
         </div>
     </div>
 
-    <div class="contenedor_compra">
+    <div class="contenedor_comprar">
         <div class="compra">
             <h2>COMPRAR</h2>
             <p class="detalles"><b>Destino:</b> <?php echo htmlspecialchars($paquete['d_nombre']); ?></p>
             <p class="detalles"><b>Alojamiento:</b> <?php echo htmlspecialchars($paquete['a_nombre']); ?></p>
             <p class="detalles"><b>Transporte:</b> <?php echo htmlspecialchars($paquete['t_tipo']); ?></p>
-            <p class="precio"><?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?></p>
+            <p class="detalles"><b>Max personas:</b> 5</p>
+            <p class="detalles precio"><?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?>bs </p>
+            
             <div class="botones">
-                <a href="" class="item reserva">RESERVAR</a>
-                <a href="" class="item compra">COMPRAR</a>
+                <a href="" class="item reserva" id="btn_reserva">RESERVAR</a>
+                <a href="" class="item compra" 
+                id="btn_comprar"
+                
+                data-destino="<?php echo htmlspecialchars($paquete['d_nombre']); ?>"
+                data-alojamiento="<?php echo htmlspecialchars($paquete['d_nombre']); ?>"
+                data-transporte="<?php echo htmlspecialchars($paquete['t_tipo']); ?>"
+                data-max_personas="5"
+                data-precio_total="<?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?>"
+                >COMPRAR</a>
             </div>
 
         </div>

@@ -111,13 +111,89 @@ function reload_script(dom) {
         if (result.success) {
           const paquete = result.data;
           $('#content').html(paquete);
+          reload_script("#content");
         } else {
           $('#content').html("error en cargar compra");
         }
       });
     });
 
+  });
+
+  $(dom).find(".contenedor_comprar").each(function () {
+    const contenedor = $(this); // Selecciona el contenedor actual
+
+    contenedor.on('click', '#btn_comprar', function (e) {
+      e.preventDefault();
+
+
+      const destino = $(this).data("destino");
+      const alojamiento = $(this).data("alojamiento");
+      const precio = $(this).data("precio_total");
+       
+      const url = "view/paquetes/comprar";
+      configurarModal({ destino, alojamiento, precio });
+
+      $('#modal-default').modal('show');
+
+      $("#modal-confirm")
+        .off("click")
+        .on("click", function () {
+          const formulario = document.getElementById("form-modal");
+          const datos = Object.fromEntries(new FormData(formulario));
+          
+            
+          
+
+          $("#modal-default").modal("hide");
+          $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
+        });
+      
+    });
 
   });
 
+}
+
+
+function configurarModal(datos) {
+  // Cambiar el encabezado y los colores
+  $("#modal-header")
+    .toggleClass("bg-warning", true)
+    
+  $("#modal-title").text("PROCESO DE COMPRA");
+
+  // Configurar el modal
+  configurarBodyModal(datos);
+
+  // Configurar el botón de confirmación
+  $("#modal-confirm")
+    .text("Comprar")
+    
+    
+}
+
+
+function configurarBodyModal(datos) {
+  $("#modal-body").html(`
+    <form id="form-modal">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="destino">Destino</label>
+                <input type="text" class="form-control" name="destino" id="destino" value="" readonly>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="alojamiento">Destino</label>
+                <input type="text" class="form-control" name="alojamiento" id="alojamiento" value="" readonly>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="precio">Precio</label>
+                <input type="text" class="form-control" name="precio" id="precio" value="" readonly>
+            </div>
+        </div>
+      </form>`);
 }
