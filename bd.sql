@@ -140,3 +140,103 @@ CREATE TABLE paquete (
     FOREIGN KEY (transporte_salida) REFERENCES transporte(id) ON DELETE CASCADE,
     FOREIGN KEY (transporte_regreso) REFERENCES transporte(id) ON DELETE CASCADE
 );
+
+
+/* procedimientos */
+
+-- Active: 1731782349802@@127.0.0.1@3306@turismo
+
+-- CONSULTAS
+SELECT * FROM paquete;
+
+SELECT * from tipo_paquete;
+
+SELECT * FROM destino;
+
+DELIMITER / /
+
+CREATE PROCEDURE obtener_paquetes()
+BEGIN
+	SELECT P.id,D.nombre, D.coordenadas, D.departamento, TP.nombre as tipo_paquete, P.precio_total, P.descripcion, D.imagenes,
+
+	FROM paquete P
+	INNER JOIN destino D ON P.destino_id = D.id
+	INNER JOIN tipo_paquete TP ON P.id_tipo_paquete = TP.id;
+END //
+
+DELIMITER;
+
+CALL obtener_paquetes ();
+
+DROP PROCEDURE obtener_paquetes
+
+SELECT
+    D.id,
+    TP.nombre as tp_paquete,
+    D.nombre as d_nombre,
+    D.descripcion,
+    D.departamento as d_departamento,
+    D.ubicacion,
+    D.coordenadas as d_coordenadas,
+    D.imagenes as d_imagenes,
+    D.clima,
+    D.restricciones,
+    D.atracciones,
+    A.nombre as a_nombre,
+    A.tipo as a_tipo,
+    A.url_maps as a_tipo,
+    A.ubicacion as a_ubicacion,
+    A.servicios as a_servicios,
+    A.descripcion as a_descripcion,
+    A.imagenes,
+    T.tipo as t_tipo,
+    T.codigo as t_codigo
+FROM
+    paquete P
+    INNER JOIN destino D ON P.destino_id = D.id
+    INNER JOIN tipo_paquete TP ON P.id_tipo_paquete = TP.id
+    INNER JOIN alojamiento A ON P.alojamiento_id = A.id
+    INNER JOIN transporte T ON P.transporte_salida = T.id
+WHERE
+    P.id = 1;
+
+DELIMITER //
+
+CREATE PROCEDURE oi_paquete(IN paquete_id INT)
+BEGIN
+    SELECT     
+        D.id,
+		P.duracion as p_duracion,
+		P.precio_total as p_precio_total,
+        TP.nombre AS tp_paquete,
+        D.nombre AS d_nombre,
+        D.descripcion as d_descripcion,
+        D.departamento AS d_departamento,
+        D.ubicacion,
+        D.coordenadas AS d_coordenadas,
+        D.imagenes AS d_imagenes,
+        D.clima,
+        D.restricciones,
+        D.atracciones,
+        A.nombre AS a_nombre,
+        A.tipo AS a_tipo,
+        A.url_maps AS a_url_maps,
+        A.ubicacion AS a_ubicacion,
+        A.servicios AS a_servicios,
+        A.descripcion AS a_descripcion,
+        A.imagenes,
+        T.tipo AS t_tipo,
+        T.codigo AS t_codigo
+    FROM paquete P
+    INNER JOIN destino D ON P.destino_id = D.id
+    INNER JOIN tipo_paquete TP ON P.id_tipo_paquete = TP.id
+    INNER JOIN alojamiento A ON P.alojamiento_id = A.id
+    INNER JOIN transporte T ON P.transporte_salida = T.id 
+    WHERE P.id = paquete_id;
+END //
+
+DELIMITER ;
+
+DROP PROCEDURE oi_paquete;
+
+CALL oi_paquete (5);
