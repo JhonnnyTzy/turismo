@@ -4,131 +4,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registro</title>
+  <title>Registrar Usuario</title>
+  <!-- icheck bootstrap -->
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="icon" href="<?php echo URL_RESOURCES; ?>images/icono.jpg" type="image/png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
+
 </head>
 
-<body class="hold-transition register-page">
-  <div class="register-box">
-    <div class="card card-outline card-primary">
-      <div class="card-header text-center">
-        <a href="../../index.php" class="h1"><b>TURISMO</b>BO</a>
+<body>
+
+  <?php
+  if (isset($_SESSION['toast'])):
+  ?>
+    <div class="toast-container d-flex justify-content-center">
+      <div class="toast bg-danger text-white" role="alert" aria-live="assertive" data-delay="2000">
+        <div class="toast-header ">
+          <strong class="mr-auto">Error al iniciar sesión</strong>
+          <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          <?php echo htmlspecialchars($_SESSION['toast']['message']); ?>
+        </div>
       </div>
-      <div class="card-body">
-        <p class="login-box-msg">Register nuevo Usuario</p>
+    </div>
+  <?php endif;
+  session_unset();
+  ?>
 
-        <form action="/turismo/usuario/registrar" method="post">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
+  <div class="login_contenedor">
+    <div class="fondo_login">
+      <div class="formulario_registrar">
+        <div class="redes_contenedor">
+          <div class="redes">
+            <div class="redes_titulo">
+              <h2 class="redes_title">JOMI</h2>
+              <h2 class="redes_title name"><b>WASI</b></h2>
             </div>
+            <div class="redes_sociales">
+              <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            </div>
+
           </div>
-
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Apellido" name="apellido">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
+        </div>
+        <div class="form_registrar">
+          <form action="/turismo/usuario/registrar" method="POST" class="formulario">
+            <h2 style="text-align: center; font-size: 3rem;">Registrarse</h2>
+            <div class="fila">
+              <input type="text" name="nombre" placeholder="Nombre" class="box_login" required>
+              <input type="text" name="apellido" placeholder="Apellido" class="box_login" required>
             </div>
-          </div>
-
-          <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email" name="email">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+            <div class="fila">
+              <input type="email" name="email" placeholder="Email" class="box_login casilla" required>
             </div>
-          </div>
-
-          <div class="input-group mb-3">
-            <input type="number" class="form-control" placeholder="Telefono" name="telefono">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+            <div class="fila">
+              <input type="text" name="telefono" placeholder="Telefono" class="box_login casilla" required>
             </div>
-          </div>
 
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Direccion" name="direccion">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+            <div class="fila">
+              <input type="text" name="direccion" placeholder="Direccion (opcional) " class="box_login casilla">
             </div>
-          </div>
 
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Usuario" name="usuario">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+            <div class="fila">
+              <input type="text" name="usuario" placeholder="Usuario" class="box_login casilla" required>
             </div>
-          </div>
 
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña" name="contrasena1">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
+            <div class="fila">
+              <input type="password" name="contrasena1" placeholder="Contraseña" class="box_login" required>
+              <input type="password" name="contrasena2" placeholder="Verificar Contraseña" class="box_login" required>
             </div>
-          </div>
 
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="repetir contraseña" name="contrasena2">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
+            <button type="submit" class="btn_login">Registrar</button>
+
+            <div class="registrarse">
+              <p>Ya tienes cuenta? </p>
+              <a href="login" class="enlace"> Iniciar Sesión</a>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                <label for="agreeTerms">
-                  I agree to the <a href="#">terms</a>
-                </label>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </div>
-            <!-- /.col -->
-          </div>
-        </form>
-
-
-        <a href="/turismo/login" class="text-center">Ya tengo una cuenta</a>
+          </form>
+        </div>
       </div>
-      <!-- /.form-box -->
-    </div><!-- /.card -->
+    </div>
+
   </div>
-  <!-- /.register-box -->
+
+
 
   <!-- jQuery -->
-  <script src="<?php echo URL_RESOURCES; ?>plugins/jquery/jquery.min.js"></script>
+  <script src="<?php echo URL_RESOURCES; ?>adminlte/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="<?php echo URL_RESOURCES; ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo URL_RESOURCES; ?>adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="<?php echo URL_RESOURCES; ?>dist/js/adminlte.min.js"></script>
+  <script src="<?php echo URL_RESOURCES; ?>adminlte/dist/js/adminlte.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('.toast').toast('show');
+    });
+  </script>
 </body>
 
 </html>

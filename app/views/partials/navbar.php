@@ -27,7 +27,7 @@
                 <p><?php echo $_SESSION['user']['nombre']; ?></p>
                 <a href="logout">Cerrar Session</a>
             <?php else: ?>
-                <a href="login" style="padding: 10px 20px">Iniciar Sesión</a>
+                <a href="view/login" style="padding: 10px 20px">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
 

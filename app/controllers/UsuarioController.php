@@ -11,11 +11,13 @@ class UsuarioController
         if ($data['contrasena1'] === $data['contrasena2']) {
             $usuario = new Usuario();
             $rol = isset($data['rol']) ? $data['rol'] : 2; // Si 'rol' no existe, asigna 1
-            $hash_password = password_hash($data['contrasena1'], PASSWORD_ARGON2ID);
+
+            $hash_password = password_hash($data['contrasena1'], PASSWORD_ARGON2ID);// hashaer contraseña
             $success = $usuario->createUser($data['nombre'], $data['apellido'], $data['email'], $data['usuario'], $hash_password, $data['telefono'], $data['direccion'], $rol);
 
             if ($success) {
-                header('Location: /turismo/login');
+                header('Location: /turismo/view/login');
+                echo json_encode(['success' => 'Usuario registrado exitosamente']);
             } else {
                 echo json_encode(['error' => 'Error al registrar el usuario']);
             }
@@ -59,7 +61,7 @@ class UsuarioController
             ];
 
             // Redirigir nuevamente al login
-            header('Location: /turismo/login');
+            header('Location: /turismo/view/login');
         }
         exit();
     }

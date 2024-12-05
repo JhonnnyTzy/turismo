@@ -24,7 +24,7 @@ $app->router->add('GET', '/admin', function () {
     require_once __DIR__ . '/../app/views/home_admin.php';
 });
 
-$app->router->add('GET', '/login', function () {
+$app->router->add('GET', '/view/login', function () {
     require_once __DIR__ . '/../app/views/login.php';
 });
 

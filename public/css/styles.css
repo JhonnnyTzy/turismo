@@ -10,6 +10,31 @@
 }
 
 /* login */
+.fab{
+    color: #ffffffef;
+    font-size: 2rem;
+    margin: 0px 10px;
+}
+
+.btn_login{
+    all:unset;
+    width: 100%;
+    height: 50px;
+    background-color: #e15a16ef;
+    border-radius: 10px;
+    margin: 20px 0px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    &:hover{
+        &:hover{
+            background-color: #f77839ef;
+            color: #ffffffef;
+        }
+    }
+}
+
 .login_contenedor{
     background-image: url(../images/fondo_login.jpg);
     width: 100%;
@@ -34,6 +59,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 20px;
+
             .redes_contenedor{
                 background-image: url(../images/fondo2_login.jpg);
                 width: 50%;
@@ -47,7 +73,7 @@
                     border-radius: 20px 0px 0px 20px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
                     .redes_title{
                         color: #ffffff;
@@ -78,30 +104,11 @@
                     .box_login{
                         all:unset;
                         width: 100%;
-                        height: 80px;
-                        border: none;
-                        border-bottom: 3px solid #2a2a2a;
-                        background: #ffffff;
+                        border-radius: 10px;
+                        padding: 10px;
+                        background: #efefef;
                         margin: 15px 0px;
                         font-size: 1.2rem;
-                    }
-                    .btn_login{
-                        all:unset;
-                        width: 100%;
-                        height: 50px;
-                        background-color: #e15a16ef;
-                        border-radius: 10px;
-                        margin: 20px 0px;
-                        font-size: 1.5rem;
-                        color: #ffffff;
-                        cursor: pointer;
-                        text-align: center;
-                        &:hover{
-                            background-color: #ffffff;
-                            color: #e15a16ef;
-                            border: 2px solid #e15a16ef;
-                        }
-                        
                     }
                     .registrarse{
                         width: 100%;
@@ -137,12 +144,100 @@
 }
 
 
-
-
-
-
 /* fin login*/
 
+
+
+/* registrarse */
+
+
+
+.formulario_registrar{
+    background-color: #ffffff;
+    width: 1000px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    .redes_contenedor{
+        background-image: url(../images/fondo2_login.jpg);
+        width: 50%;
+        height: 100%;
+        background-size: cover;
+        border-radius: 20px 0px 0px 20px;
+        .redes{
+            width: 100%;
+            height: 100%;
+            background-color: #282828a2;
+            border-radius: 20px 0px 0px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            .redes_title{
+                color: #ffffff;
+                font-size: 5rem;
+                line-height: 1;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .name{
+                color: #e15a16ef;
+                font-size: 6rem;
+                
+            }
+        }
+    }
+    .form_registrar{
+        width: 50%;
+        height: 100%;
+        .formulario{
+            padding: 50px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .fila{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                width: 100%;
+                .casilla{
+                    
+                    grid-column: span 2;
+                }
+            }
+            
+            .box_login{
+                all:unset;
+                width: 100%;
+                border-radius: 10px;
+                padding: 10px;
+                background: #eeeeee;
+                margin: 10px 0px;
+                font-size: 1rem;
+            }
+            
+            .registrarse{
+                width: 100%;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                .enlace, p{
+                    margin: 0 2px;
+                }
+            }
+            
+        }
+        
+    }
+}
 
 .toasts-center.fixed{
     position: fixed ;

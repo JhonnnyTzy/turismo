@@ -15,6 +15,8 @@ if (isset($_SESSION['user'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
 
+  <link rel="icon" href="<?php echo URL_RESOURCES; ?>images/icono.jpg" type="image/png">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
@@ -25,7 +27,7 @@ if (isset($_SESSION['user'])) {
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
 </head>
 
-<body class="">
+<body>
 
   <?php
   if (isset($_SESSION['toast'])):
@@ -68,16 +70,16 @@ if (isset($_SESSION['user'])) {
         </div>
         <div class="form_login">
           
-          <form action="turismo/login" method="POST" class="formulario">
+          <form action="/turismo/login" method="POST" class="formulario">
           <img src="<?php echo URL_RESOURCES; ?>images/icono_login.jpg" alt="" width="150px">
-          <h2 style="text-align: center; font-size: 3rem;">Login</h2>
+          <h2 style="text-align: center; font-size: 2.5rem;">Iniciar Sessión</h2>
             <input type="text" name="usuario" placeholder="Usuario" class="box_login" required>
 
             <input type="password" name="contrasena" placeholder="Contraseña" class="box_login" required>
             <button type="submit" class="btn_login">Iniciar Sesión</button>
             <div class="registrarse">
               <p>No tienes cuenta?    </p>
-              <a href="view/registrar" class="enlace"> Registrarse</a>
+              <a href="registrar" class="enlace"> Registrarse</a>
             </div>
 
             

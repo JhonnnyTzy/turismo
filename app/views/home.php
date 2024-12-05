@@ -15,6 +15,10 @@ if (isset($_SESSION['user'])) {
     } 
 }
 
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -119,11 +123,18 @@ if (isset($_SESSION['user'])) {
                     <a href="la-paz.html">Descubre La Paz</a>
                 </div>
             </article>
+
+            <article class="vides">
+                <div class="video">
+                <iframe src="https://youtu.be/PCyfT2Il_Ng?si=IvfjuR22Oq-IJ96u" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            </article>
         </section>
 
-
+        <?php include __DIR__ . '/partials/footer.php'; ?>
     </div>
 
+    
 
 
     <!-- jQuery -->
