@@ -26,10 +26,13 @@ class Router
                 array_shift($matches);
 
                 foreach ($data['middlewares'] as $middleware) {
-                    (new $middleware())->handle(Request::getBody(), function () {});
+                    $middlewareInstance = new $middleware();
+                    // Pasar la solicitud como argumento al middleware
+                    $middlewareInstance->handle(Request::getBody(), function() {});
                 }
 
-                return call_user_func_array($data['action'], $matches);
+                // Pasar Request::getBody() como el argumento necesario para la acción
+                return call_user_func_array($data['action'], array_merge([Request::getBody()], $matches));
             }
         }
 

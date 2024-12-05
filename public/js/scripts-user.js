@@ -107,7 +107,7 @@ function reload_script(dom) {
 
     contenedor.on('click', '#btn_detalle', function (e) {
       const id = $(this).data("id"); // Obtén el atributo data-id del botón
-      enviar_solicitud(`view/paquetes/detalle/${id}`, 'GET', {}, false, function (result) {
+      enviar_solicitud(`view/paquetes/detalle`, 'POST', { id: id }, false, function (result) {
         if (result.success) {
           const paquete = result.data;
           $('#content').html(paquete);
@@ -126,13 +126,16 @@ function reload_script(dom) {
     contenedor.on('click', '#btn_comprar', function (e) {
       e.preventDefault();
 
-
+      const id_paquete = $(this).data("idpaquete");
+      const id_user = $(this).data("iduser");
       const destino = $(this).data("destino");
       const alojamiento = $(this).data("alojamiento");
+      const trasporte = $(this).data("transporte");
       const precio = $(this).data("precio_total");
-       
-      const url = "view/paquetes/comprar";
-      configurarModal({ destino, alojamiento, precio });
+      const codigo_secreto = generarCodigoSecreto();
+      const cantidad = $(this).data("cantidad");
+      const url = "paquetes/comprar";
+      configurarModal({ destino, alojamiento, trasporte,cantidad, precio });
 
       $('#modal-default').modal('show');
 
@@ -140,7 +143,18 @@ function reload_script(dom) {
         .off("click")
         .on("click", function () {
           const formulario = document.getElementById("form-modal");
-          const datos = Object.fromEntries(new FormData(formulario));
+          const formData = new FormData(formulario);
+          formData.append("id_paquete", id_paquete);
+          formData.append("id_user", id_user);
+          formData.append("codigo_secreto", codigo_secreto);
+          enviar_solicitud(url, 'POST', formData, false, function (result) {
+            if (result.success) {
+              
+              
+            } else {
+              
+            }
+          });
           
             
           
@@ -173,6 +187,18 @@ function configurarModal(datos) {
     
 }
 
+function generarCodigoSecreto(longitud = 10) {
+  const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let codigo = "";
+  
+  for (let i = 0; i < longitud; i++) {
+    const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+    codigo += caracteres[indiceAleatorio];
+  }
+
+  return codigo;
+}
+
 
 function configurarBodyModal(datos) {
   $("#modal-body").html(`
@@ -180,19 +206,30 @@ function configurarBodyModal(datos) {
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="destino">Destino</label>
-                <input type="text" class="form-control" name="destino" id="destino" value="" readonly>
+                <input type="text" class="form-control" name="destino" id="destino" value="${datos.destino}" readonly>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="alojamiento">Destino</label>
-                <input type="text" class="form-control" name="alojamiento" id="alojamiento" value="" readonly>
+                <label for="alojamiento">Alojamiento</label>
+                <input type="text" class="form-control" name="alojamiento" id="alojamiento" value="${datos.alojamiento}" readonly>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="transporte">Transporte</label>
+                <input type="text" class="form-control" name="transporte" id="transporte" value="${datos.trasporte}" readonly>
+            </div>
+        <div class="form-group col-md-6">
+                <label for="cantidad">Cantidad</label>
+                <input type="text" class="form-control" name="cantidad" id="cantidad" value="${datos.cantidad}" readonly>
+            </div>
+        </div>
+        
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="precio">Precio</label>
-                <input type="text" class="form-control" name="precio" id="precio" value="" readonly>
+                <input type="text" class="form-control" name="precio" id="precio" value="${datos.precio}" readonly>
             </div>
         </div>
       </form>`);

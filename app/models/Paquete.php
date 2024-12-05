@@ -62,4 +62,37 @@ class Paquete
 
         return $resultado;
     }
+
+    public function comprarPaquete($id_usuario, $id_paquete, $codigo_secreto)
+    {
+        $sql = "INSERT INTO venta(usuario_id, paquete_id, codigo_secreto) VALUES (:id_usuario, :id_paquete, :codigo_secreto)";
+
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->bindParam(':id_paquete', $id_paquete);
+        $stmt->bindParam(':codigo_secreto', $codigo_secreto);
+
+        
+        if ($stmt->execute()) {
+            // Retornar el último ID insertado
+            return $this->conexion->lastInsertId();
+        }
+
+        return false;
+    }
+
+    public function registrarDetalleVenta($destino, $alojamiento,$transporte, $venta_id, $cantidad, $precio)
+    {
+        $sql = "INSERT INTO detalle_venta(destino, alojamiento, transporte, venta_id, cantidad_personas, precio) VALUES (:destino, :alojamiento, :transporte, :venta_id, :cantidad, :precio_total)"; 
+
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':destino', $destino);
+        $stmt->bindParam(':alojamiento', $alojamiento);
+        $stmt->bindParam(':transporte', $transporte);
+        $stmt->bindParam(':venta_id', $venta_id);
+        $stmt->bindParam(':cantidad', $cantidad);
+        $stmt->bindParam(':precio_total', $precio);
+
+        return $stmt->execute();
+    }
 }

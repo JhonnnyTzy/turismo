@@ -22,8 +22,11 @@ $app->router->add('GET', '/view/paquetes/obtener', function () {
     $controller->obtener_paquetes();
 });
 
-$app->router->add('GET', '/view/paquetes/detalle/:id', function ($id) {
+$app->router->add('POST', '/view/paquetes/detalle', function ($id) {
     $controller = new PaqueteController();
     $controller->obtenerInfoPaquete($id);
 });
-?>
+$app->router->add('POST', '/paquetes/comprar', function ($data) {
+    $controller = new PaqueteController();
+    $controller->comprarPaquete($data);
+});

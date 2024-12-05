@@ -36,7 +36,7 @@ class UsuarioController
         if ($authenticatedUser) {
 
             $_SESSION['user'] = [
-                'id' => $authenticatedUser['id'],
+                'id' => $authenticatedUser['id_usuario'],
                 'nombre' => $authenticatedUser['nombre'],
                 'apellido' => $authenticatedUser['apellido'],
                 'email' => $authenticatedUser['email'],

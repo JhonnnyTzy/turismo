@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $imagenes = json_decode($paquete['d_imagenes'], true); // Decodificar el JSON de imágenes
 $imagen_decodificada = json_decode($imagenes, true); // array de imagenes
@@ -138,11 +139,12 @@ foreach ($imagen_decodificada_a as $key => $value) {
                 <a href="" class="item reserva" id="btn_reserva">RESERVAR</a>
                 <a href="" class="item compra" 
                 id="btn_comprar"
-                
+                data-idpaquete = "<?php echo $paquete['id']; ?>"
+                data-iduser = "<?php echo htmlspecialchars($_SESSION['user']['id']); ?>"
                 data-destino="<?php echo htmlspecialchars($paquete['d_nombre']); ?>"
-                data-alojamiento="<?php echo htmlspecialchars($paquete['d_nombre']); ?>"
+                data-alojamiento="<?php echo htmlspecialchars($paquete['a_nombre']); ?>"
                 data-transporte="<?php echo htmlspecialchars($paquete['t_tipo']); ?>"
-                data-max_personas="5"
+                data-cantidad="5"
                 data-precio_total="<?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?>"
                 >COMPRAR</a>
             </div>

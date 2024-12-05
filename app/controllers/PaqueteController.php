@@ -59,8 +59,9 @@ class PaqueteController
 
     public function obtenerInfoPaquete($id)
     {
+        
         $pqt = new Paquete();
-        $paquete = $pqt->obtenerInfoPaquete($id);
+        $paquete = $pqt->obtenerInfoPaquete($id['id']);
 
         ob_start();
         require_once __DIR__ . '/../views/Paquetes/Compra.php';
@@ -69,5 +70,22 @@ class PaqueteController
         header('Content-Type: application/json');
 
         echo json_encode(['success' => true, 'data' => $html]);
+    }
+
+    public function comprarPaquete($data){
+        
+        $pqt = new Paquete();
+        $id_venta = $pqt->comprarPaquete($data['id_user'], $data['id_paquete'], $data['codigo_secreto']);
+        $success = $pqt->registrarDetalleVenta($data['destino'], $data['alojamiento'], $data['transporte'], $id_venta, $data['cantidad'], $data['precio']);
+
+        header('Content-Type: application/json');
+        if($success){
+            echo json_encode(['success' => true, 'message' => 'Paquete comprado correctamente.']);
+        }else{
+            echo json_encode(['success' => false, 'message' => 'Error al comprar el paquete.']);
+        }
+        exit();
+
+
     }
 }
