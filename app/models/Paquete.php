@@ -95,4 +95,15 @@ class Paquete
 
         return $stmt->execute();
     }
+
+    public function listarVentas()
+    {
+        $stmt = $this->conexion->prepare("CALL obtener_ventas();");
+        $stmt->execute();
+        $resultados =  $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+
+
 }

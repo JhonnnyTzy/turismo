@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\Paquete;
+
 session_start();
+
+$paquete = new Paquete();
+$ventas = $paquete->listarVentas();
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +99,7 @@ session_start();
             </div>
 
             <div id="content" class="content_main">
-                <h1>hola</h1>
+                <?php require __DIR__ . '/admin/dashboard.php'; ?>
             </div>
 
 
@@ -155,7 +160,23 @@ session_start();
     <script src="<?php echo URL_RESOURCES; ?>js/modal_body.js"></script>
 
     <script src="<?php echo URL_RESOURCES; ?>js/script_base.js"></script>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $("#content")
+                .find(".table")
+                .DataTable({
+                    responsive: true,
+                    lengthChange: false,
+                    autoWidth: false,
+                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                })
+                .buttons()
+                .container()
+                .appendTo("#example1_wrapper .col-md-6:eq(0)");
+        })
+    </script>
+
 
 </body>
 

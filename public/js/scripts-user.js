@@ -135,34 +135,36 @@ function reload_script(dom) {
       const codigo_secreto = generarCodigoSecreto();
       const cantidad = $(this).data("cantidad");
       const url = "paquetes/comprar";
-      configurarModal({ destino, alojamiento, trasporte,cantidad, precio });
+      if (!id_user == 0) {
+        configurarModal({ destino, alojamiento, trasporte, cantidad, precio });
 
-      $('#modal-default').modal('show');
+        $('#modal-default').modal('show');
 
-      $("#modal-confirm")
-        .off("click")
-        .on("click", function () {
-          const formulario = document.getElementById("form-modal");
-          const formData = new FormData(formulario);
-          formData.append("id_paquete", id_paquete);
-          formData.append("id_user", id_user);
-          formData.append("codigo_secreto", codigo_secreto);
-          enviar_solicitud(url, 'POST', formData, false, function (result) {
-            if (result.success) {
-              
-              
-            } else {
-              
-            }
+        $("#modal-confirm")
+          .off("click")
+          .on("click", function () {
+            const formulario = document.getElementById("form-modal");
+            const formData = new FormData(formulario);
+            formData.append("id_paquete", id_paquete);
+            formData.append("id_user", id_user);
+            formData.append("codigo_secreto", codigo_secreto);
+            enviar_solicitud(url, 'POST', formData, false, function (result) {
+              if (result.success) {
+
+
+              } else {
+
+              }
+            });
+
+            $("#modal-default").modal("hide");
+            $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
           });
-          
-            
-          
+      }else{
+        alert("Debes iniciar sesion para comprar");
+      }
 
-          $("#modal-default").modal("hide");
-          $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
-        });
-      
+
     });
 
   });
@@ -174,7 +176,7 @@ function configurarModal(datos) {
   // Cambiar el encabezado y los colores
   $("#modal-header")
     .toggleClass("bg-warning", true)
-    
+
   $("#modal-title").text("PROCESO DE COMPRA");
 
   // Configurar el modal
@@ -183,14 +185,14 @@ function configurarModal(datos) {
   // Configurar el botón de confirmación
   $("#modal-confirm")
     .text("Comprar")
-    
-    
+
+
 }
 
 function generarCodigoSecreto(longitud = 10) {
   const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let codigo = "";
-  
+
   for (let i = 0; i < longitud; i++) {
     const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
     codigo += caracteres[indiceAleatorio];

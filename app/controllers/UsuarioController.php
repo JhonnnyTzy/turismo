@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Usuario;
-
+use App\Models\Paquete;
 class UsuarioController
 {
     public function registrar($data)
@@ -46,6 +46,7 @@ class UsuarioController
             ];
 
             if ($rol == 'ADMIN') {
+                
                 header('Location: ' . HTTP_BASE . '/admin');
             } else {
                 header('Location: ' . HTTP_BASE);

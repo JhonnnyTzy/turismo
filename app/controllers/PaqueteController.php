@@ -88,4 +88,12 @@ class PaqueteController
 
 
     }
+
+    public function listarVentas(){
+
+        $pqt = new Paquete();
+        $ventas = $pqt->listarVentas();
+        return $ventas;
+    }
+        
 }

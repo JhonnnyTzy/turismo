@@ -60,6 +60,7 @@
                                         <a href="" class="nav-link menu-link"
                                             data-url="view/transporte/listar"
                                             data-ajax="true"
+                                            data-listar = "true"
                                             data-entidad="listar_transporte">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Listar trasporte</p>
@@ -91,6 +92,7 @@
                                         data-url="view/destino/listar" 
                                         data-entidad="listar_destino"
                                         data-ajax="true" 
+                                        data-listar = "true"
                                         >
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Listar Destinos</p>
@@ -120,6 +122,7 @@
                                     <li class="nav-item">
                                         <a href="" class="nav-link menu-link" 
                                         data-ajax="true"
+                                        data-listar = "true"
                                         data-url="view/alojamiento/listar"
                                         data-entidad="listar_alojamiento">
                                             <i class="far fa-circle nav-icon"></i>
@@ -151,6 +154,7 @@
                                         <a href="" class="nav-link menu-link" 
                                         data-ajax="true"
                                         data-url="view/paquete/listar"
+                                        data-listar = "true"
                                         data-entidad="listar_paquete">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Listar paquete</p>

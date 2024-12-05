@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
 
       const url = link.dataset.url;
-
+      const listar = link.dataset.listar;
       if (!url) {
         console.error("No se encontró la URL en data-url.");
         return;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const html = await response.text();
         content.innerHTML = html; // Insertar el contenido HTML cargado
-        reload_script("#content");
+        reload_script("#content", listar);
       } catch (error) {
         console.error(error);
         content.innerHTML = "<p>Error al cargar la vista.</p>";
@@ -108,7 +108,7 @@ function mostrar_toast(resultado, mostrar_notificacion) {
   bootstrapToast.show();
 }
 
-function reload_script(dom) {
+function reload_script(dom, listar) {
   $(dom).find(".select2").select2();
   $(dom).find(".select2bs4").select2({
     theme: "bootstrap4",
@@ -124,8 +124,9 @@ function reload_script(dom) {
     });
   $(dom).find("#temporada").daterangepicker();
 
-  $(dom).find("#duracion").daterangepicker(
-    {
+  $(dom)
+    .find("#duracion")
+    .daterangepicker({
       autoApply: true,
       showDropdowns: true,
       minDate: moment(),
@@ -133,146 +134,182 @@ function reload_script(dom) {
         format: "YYYY-MM-DD",
         separator: " - ",
       },
-    }
-  );
-
-  $(dom)
-    .find(".table")
-    .DataTable({
-      responsive: true,
-      lengthChange: false,
-      autoWidth: false,
-      buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    })
-    .buttons()
-    .container()
-    .appendTo("#example1_wrapper .col-md-6:eq(0)");
-
-  $(dom)
-    .find(".table")
-    .on("click", ".btn-action", function () {
-      const action = $(this).data("action");
-      const dt = $(this).data("info");
-      const entidad = $(this).data("entidad");
-      console.log(action);
-      configurarModal(action, dt, entidad);
-
-      // Configuración del botón de confirmación
-      $("#modal-confirm")
-        .off("click")
-        .on("click", function () {
-          const formulario = document.getElementById("form-modal");
-          const datos = Object.fromEntries(new FormData(formulario));
-          const url =
-            action === "editar" ?  entidad+"/actualizar" : entidad+"/eliminar";
-          const method = "POST";
-
-          enviar_solicitud(url, method, datos, true, function (response) {
-            if (response.success) {
-              recargarTabla(entidad); // Recarga la tabla después de una acción
-            } else {
-              console.error("Error: " + response.error);
-            }
-          });
-
-          $("#modal-default").modal("hide");
-          $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
-        });
     });
 
-    // BS-Stepper Init
+  if (listar) {
+    $(dom)
+      .find(".table")
+      .DataTable({
+        responsive: true,
+        lengthChange: false,
+        autoWidth: false,
+        buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      })
+      .buttons()
+      .container()
+      .appendTo("#example1_wrapper .col-md-6:eq(0)");
+
+    $(dom)
+      .find(".table")
+      .on("click", ".btn-action", function () {
+        const action = $(this).data("action");
+        const dt = $(this).data("info");
+        const entidad = $(this).data("entidad");
+        console.log(action);
+        configurarModal(action, dt, entidad);
+
+        // Configuración del botón de confirmación
+        $("#modal-confirm")
+          .off("click")
+          .on("click", function () {
+            const formulario = document.getElementById("form-modal");
+            const datos = Object.fromEntries(new FormData(formulario));
+            const url =
+              action === "editar"
+                ? entidad + "/actualizar"
+                : entidad + "/eliminar";
+            const method = "POST";
+
+            enviar_solicitud(url, method, datos, true, function (response) {
+              if (response.success) {
+                recargarTabla(entidad); // Recarga la tabla después de una acción
+              } else {
+                console.error("Error: " + response.error);
+              }
+            });
+
+            $("#modal-default").modal("hide");
+            $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
+          });
+      });
+  }
+
+  // BS-Stepper Init
   // Inicializa el BS-Stepper solo si existe el contenedor
   const stepperContainer = document.querySelector(".bs-stepper");
   if (stepperContainer) {
     window.stepper = new Stepper(stepperContainer);
   }
-  $(dom).find("#formPaquete").on("submit", function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    enviar_solicitud(this.action, "POST", formData, true, function (response) {
-      if (response.success) {
-        $("#content").html(response.html);
-        reload_script("#content");
+  $(dom)
+    .find("#formPaquete")
+    .on("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      enviar_solicitud(
+        this.action,
+        "POST",
+        formData,
+        true,
+        function (response) {
+          if (response.success) {
+            $("#content").html(response.html);
+            reload_script("#content");
+          }
+        }
+      );
+    });
+  // Cofigurar selct de departamentos en paquete
+  $(dom)
+    .find("#select_departamento")
+    .on("change", function () {
+      const departamentoId = $(this).val();
+      $("#s_departamento").text(departamentoId);
+
+      if (departamentoId) {
+        // filtar destinos - final
+        enviar_solicitud(
+          "destino/filtrarD",
+          "POST",
+          departamentoId,
+          false,
+          function (response) {
+            if (response.success) {
+              const selectDestino = document.getElementById("select_destino");
+              selectDestino.innerHTML = "";
+              response.destinos.forEach((destino) => {
+                const option = document.createElement("option");
+                option.value = destino.id;
+                option.text = destino.nombre;
+                selectDestino.appendChild(option);
+              });
+            }
+          }
+        );
+        //filtrar transportes - Regreso
+
+        enviar_solicitud(
+          "transporte/filtrarD",
+          "POST",
+          departamentoId,
+          false,
+          function (response) {
+            if (response.success) {
+              const selectTransporte =
+                document.getElementById("select_transporteL");
+              selectTransporte.innerHTML = "";
+              response.transportes.forEach((transporte) => {
+                const option = document.createElement("option");
+                option.value = transporte.id;
+                option.text = transporte.tipo;
+                selectTransporte.appendChild(option);
+              });
+              $("#ll_departamento").text(departamentoId);
+            }
+          }
+        );
+
+        enviar_solicitud(
+          "alojamiento/filtrarD",
+          "POST",
+          departamentoId,
+          false,
+          function (response) {
+            if (response.success) {
+              const selectAlojamiento =
+                document.getElementById("select_alojamiento");
+              selectAlojamiento.innerHTML = "";
+              response.alojamientos.forEach((alojamiento) => {
+                const option = document.createElement("option");
+                option.value = alojamiento.id;
+                option.text = alojamiento.nombre;
+                selectAlojamiento.appendChild(option);
+              });
+              $("#al_departamento").text(departamentoId);
+            }
+          }
+        );
       }
-    }
-    );
-  });
-// Cofigurar selct de departamentos en paquete
-$(dom).find("#select_departamento").on("change", function () {
+    });
 
-  const departamentoId = $(this).val();
-  $("#s_departamento").text(departamentoId);
+  $(dom)
+    .find("#select_departamento_origen")
+    .on("change", function () {
+      const departamentoId = $(this).val();
+      $("#st_departamento").text(departamentoId);
 
-  if (departamentoId) {
-    // filtar destinos - final
-     enviar_solicitud("destino/filtrarD","POST",departamentoId, false, function (response) {
-       if (response.success) {
-         const selectDestino = document.getElementById("select_destino");
-         selectDestino.innerHTML = "";
-         response.destinos.forEach((destino) => {
-           const option = document.createElement("option");
-           option.value = destino.id;
-           option.text = destino.nombre;
-           selectDestino.appendChild(option);
-         });
-
-       }
-     })
-     //filtrar transportes - Regreso
-
-     enviar_solicitud("transporte/filtrarD","POST",departamentoId, false, function (response) {
-       if (response.success) {
-         const selectTransporte = document.getElementById("select_transporteL");
-         selectTransporte.innerHTML = "";
-         response.transportes.forEach((transporte) => {
-           const option = document.createElement("option");
-           option.value = transporte.id;
-           option.text = transporte.tipo;
-           selectTransporte.appendChild(option);
-         });
-         $("#ll_departamento").text(departamentoId);
-
-       }
-     })
-
-     enviar_solicitud("alojamiento/filtrarD","POST",departamentoId, false, function (response) {
-       if (response.success) {
-         const selectAlojamiento = document.getElementById("select_alojamiento");
-         selectAlojamiento.innerHTML = "";
-         response.alojamientos.forEach((alojamiento) => {
-           const option = document.createElement("option");
-           option.value = alojamiento.id;
-           option.text = alojamiento.nombre;
-           selectAlojamiento.appendChild(option);
-         });
-         $("#al_departamento").text(departamentoId);
-       }
-     })
-  }
-});
-
-$(dom).find("#select_departamento_origen").on("change", function () {
-  const departamentoId = $(this).val();
-  $("#st_departamento").text(departamentoId);
-
-  if (departamentoId) {
-    // filtar transporte - Salida
-     enviar_solicitud("transporte/filtrarD","POST",departamentoId, false, function (response) {
-      if (response.success) {
-        const selectTransporteS = document.getElementById("select_transporteS");
-        selectTransporteS.innerHTML = "";
-        response.transportes.forEach((transporte) => {
-          const option = document.createElement("option");
-          option.value = transporte.id;
-          option.text = transporte.tipo;
-          selectTransporteS.appendChild(option);
-        });
+      if (departamentoId) {
+        // filtar transporte - Salida
+        enviar_solicitud(
+          "transporte/filtrarD",
+          "POST",
+          departamentoId,
+          false,
+          function (response) {
+            if (response.success) {
+              const selectTransporteS =
+                document.getElementById("select_transporteS");
+              selectTransporteS.innerHTML = "";
+              response.transportes.forEach((transporte) => {
+                const option = document.createElement("option");
+                option.value = transporte.id;
+                option.text = transporte.tipo;
+                selectTransporteS.appendChild(option);
+              });
+            }
+          }
+        );
       }
-    })
-
-  }
-});
-  
+    });
 }
 
 var uploadedFilePaths = [];
@@ -370,7 +407,7 @@ function addEventFormulario(idForm, myDropzone) {
 }
 
 async function recargarTabla(entidad) {
-  const url = "view/"+entidad+"/listar";
+  const url = "view/" + entidad + "/listar";
   const method = "GET";
 
   try {
@@ -402,5 +439,3 @@ function configurarModal(action, datos, entidad) {
     .toggleClass("btn-primary", esEditar)
     .toggleClass("btn-danger", !esEditar);
 }
-
-
