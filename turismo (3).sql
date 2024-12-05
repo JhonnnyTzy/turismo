@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2024 at 03:53 AM
+-- Generation Time: Dec 05, 2024 at 09:24 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -53,6 +53,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `oi_paquete` (IN `paquete_id` INT)  
     SELECT     
         D.id,
 		P.id as paquete_id,
+        P.nombre as p_nombre,
 		P.duracion as p_duracion,
 		P.precio_total as p_precio_total,
         TP.nombre AS tp_paquete,
@@ -220,7 +221,8 @@ CREATE TABLE `detalle_venta` (
 
 INSERT INTO `detalle_venta` (`id`, `destino`, `alojamiento`, `transporte`, `venta_id`, `cantidad_personas`, `precio`) VALUES
 (1, 'Camino De La Muerte', 'Hotel Presidente', 'AUTOBUS', 3, 5, '200.00'),
-(2, 'Parque Nacional Amboró', 'Los Tajibos Hotel & Convention Center', 'AUTOBUS', 6, 5, '100.00');
+(2, 'Parque Nacional Amboró', 'Los Tajibos Hotel & Convention Center', 'AUTOBUS', 6, 5, '100.00'),
+(3, 'Camino De La Muerte', 'Hotel Presidente', 'AUTOBUS', 7, 5, '200.00');
 
 -- --------------------------------------------------------
 
@@ -336,7 +338,8 @@ INSERT INTO `transporte` (`id`, `tipo`, `codigo`, `estado`, `capacidad`, `imagen
 (1, 'AUTOBUS', 'tx_001023', 'DISPONIBLE', 20000, '[\"taxi-icon-yellow-checkered-cab-260nw-2090678698.webp\"]', '2024-12-01 01:28:24', '2024-12-01 22:47:29', 'LA PAZ'),
 (2, 'AVION', '200dsf', 'RESERVADO', 2100, '\"[\\\"download.jpg\\\"]\"', '2024-12-01 01:31:21', '2024-12-01 22:47:29', 'SANTA CRUZ'),
 (3, 'AVION', '100u', 'RESERVADO', 1000, '\"[\\\"OIP.jpg\\\"]\"', '2024-12-01 01:41:22', '2024-12-01 22:47:29', 'COCHABAMBA'),
-(7, 'TAXI', 'xxxxxsddsbnvbn', 'DISPONIBLE', 2000, '\"[\\\"ford-taxis-promo.jpg\\\",\\\"taxistas.jpg\\\"]\"', '2024-12-01 02:57:01', '2024-12-01 22:47:29', 'BENI');
+(7, 'TAXI', 'xxxxxsddsbnvbn', 'DISPONIBLE', 2000, '\"[\\\"ford-taxis-promo.jpg\\\",\\\"taxistas.jpg\\\"]\"', '2024-12-01 02:57:01', '2024-12-01 22:47:29', 'BENI'),
+(9, 'BARCO', 'asdfasdfasd', 'RESERVADO', 500, '\"[\\\"c4d46009bd7459e9460a4de86283baea.jpg\\\"]\"', '2024-12-05 13:03:22', '2024-12-05 13:03:22', 'CHUQUISACA');
 
 -- --------------------------------------------------------
 
@@ -365,7 +368,10 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `email`, `usuario`, `password_hash`, `telefono`, `direccion`, `id_rol`, `fecha_creacion`, `fecha_actualizacion`, `activo`) VALUES
 (1, 'Miguel Angel', 'Quispe Gutierrez', 'miguel.040.net@gmail.com', 'admin', '$argon2id$v=19$m=65536,t=4,p=1$UGJEWEh0WnJwTHI4TWwzSg$gAbX3IP8mZ39Urut535XfmF/iQSJHvdVbVDa5YZynNo', '73054178', '', 1, '2024-11-28 03:28:50', '2024-11-28 03:28:50', 1),
-(2, 'david', 'mamani', 'xxxx@gmai.com', 'dev', '$argon2id$v=19$m=65536,t=4,p=1$WWEyTUk0aW9oUE9iYTNaNw$mITSttfl+fMjV8kcPlxHhc9BzX9PVDccoCp5kcUKkZk', '475125', 'Av. sdfasdf', 2, '2024-12-04 02:05:39', '2024-12-04 02:05:39', 1);
+(2, 'david', 'mamani', 'xxxx@gmai.com', 'dev', '$argon2id$v=19$m=65536,t=4,p=1$WWEyTUk0aW9oUE9iYTNaNw$mITSttfl+fMjV8kcPlxHhc9BzX9PVDccoCp5kcUKkZk', '475125', 'Av. sdfasdf', 2, '2024-12-04 02:05:39', '2024-12-04 02:05:39', 1),
+(3, 'Miguel Angel', 'Quispe Gutierrez', 'miguel.040.net@gmail.com', 'user2', '$argon2id$v=19$m=65536,t=4,p=1$S3NUdnRCWnV2NU15bzBaUg$T6vpE737HOz3fNUZicbIBTFFU7Ta7CNuHeaJ1a6Mi2M', '73054178', 'Av. sdfasdf', 2, '2024-12-05 19:52:52', '2024-12-05 19:52:52', 1),
+(4, 'Miguel Angel', 'Quispe Gutierrez', 'miguel.040.net@gmail.com', '123', '$argon2id$v=19$m=65536,t=4,p=1$L3ViMHZMelYxNmxDaXNsZA$Mc+Bkc6StBqdIhu+SFCDJWqnMHbtg/Ge5RQzC0Nofhc', '73054178', 'Av. sdfasdf', 2, '2024-12-05 19:54:21', '2024-12-05 19:54:21', 1),
+(5, 'Miguel Angel', 'Quispe Gutierrez', 'miguel.040.net@gmail.com', 'sss', '$argon2id$v=19$m=65536,t=4,p=1$SHJxcE9Pa0Z4U0I1dE1Heg$TgoKfK06TUIOTwc4EUn1p1Q+UczNP+dfnTxYqqZWosI', '73054178', 'Av. sdfasdf', 2, '2024-12-05 19:56:06', '2024-12-05 19:56:06', 1);
 
 -- --------------------------------------------------------
 
@@ -389,7 +395,8 @@ INSERT INTO `venta` (`id`, `usuario_id`, `paquete_id`, `codigo_secreto`, `fecha_
 (1, 2, 6, 'LP2GANCv1g', '2024-12-05 02:09:48'),
 (2, 2, 6, 'hq2WeKUcbU', '2024-12-05 02:13:10'),
 (3, 2, 6, 'eTYZ4poqnF', '2024-12-05 02:14:19'),
-(6, 2, 7, '1KQcKhs2ED', '2024-12-05 02:56:00');
+(6, 2, 7, '1KQcKhs2ED', '2024-12-05 02:56:00'),
+(7, 2, 1, 'HmMa6MtqZ8', '2024-12-05 13:12:00');
 
 --
 -- Indexes for dumped tables
@@ -481,7 +488,7 @@ ALTER TABLE `destino`
 -- AUTO_INCREMENT for table `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `paquete`
@@ -505,19 +512,19 @@ ALTER TABLE `tipo_paquete`
 -- AUTO_INCREMENT for table `transporte`
 --
 ALTER TABLE `transporte`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

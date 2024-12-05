@@ -9,13 +9,11 @@ header("Pragma: no-cache");
 session_start();
 
 if (isset($_SESSION['user'])) {
-    if($_SESSION['user']['rol'] == 'ADMIN'){
+    if ($_SESSION['user']['rol'] == 'ADMIN') {
         header('Location: ' . HTTP_BASE . '/admin');
         exit();
-    } 
+    }
 }
-
-
 
 
 
@@ -44,7 +42,7 @@ if (isset($_SESSION['user'])) {
 
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/dist/css/adminlte.min.css">
-    
+
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/footer-css.css">
     <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles-user.css">
@@ -75,66 +73,91 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-    
+
     <!-- Navbar -->
     <?php include __DIR__ . '/partials/navbar.php'; ?>
+
+
 
     <div class="content" id="content">
         <?php include __DIR__ . '/partials/header.php'; ?>
 
+        <h2 style="text-align: center; font-size: 5rem; margin-top: 50px"> <b>RESERVA TU VIAJE</b></h2>
         <section class="container-collage">
-            <article class="item item-1" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-                <div class="contenido">
-                    <div class="texto">
-                        <h3>El Majestuoso Illimani</h3>
-                        <p>Ciudad Marravilla</p>
+            <article class="item item-1" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/valle_luna.jpg')">
+                <div class="fondo">
+                    <div class="contenido">
+                        <div class="texto">
+                            <h3>Valle de la Luna</h3>
+                            <p>Un paisaje surrealista de formaciones rocosas únicas, perfecto para explorar.</p>
+                        <a href="" class="menu_item menu-link"
+                    data-url="view/paquetes"
+                    data-ajax="true">Descrube La Paz</a>
                     </div>
+                        </div>
 
-                    <a href="la-paz.html">Descubre La Paz</a>
+                        
                 </div>
+
             </article>
-            <article class="item item-2" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-                <div class="contenido">
-                    <div class="texto">
-                        <h3>El Majestuoso Illimani</h3>
-                        <p>Ciudad Marravilla</p>
-                    </div>
+            <article class="item item-2" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/cataratas.jpeg')">
+                <div class="fondo">
+                    <div class="contenido">
+                        <div class="texto">
+                            <h3>Cataratas de Espejillos</h3>
+                            <p>Una joya escondida con cascadas cristalinas rodeadas de exuberante vegetación</p>
+                            <a href="" class="menu_item menu-link"
+                    data-url="view/paquetes"
+                    data-ajax="true">Descubre Santa Cruz</a>
+                        </div>
 
-                    <a href="la-paz.html">Descubre La Paz</a>
+                        
+                    </div>
                 </div>
+
             </article>
-            <article class="item item-3" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-                <div class="contenido">
-                    <div class="texto">
-                        <h3>El Majestuoso Illimani</h3>
-                        <p>Ciudad Marravilla</p>
-                    </div>
+            <article class="item item-3" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/laguna_corani.jpg')">
+                <div class="fondo">
+                    <div class="contenido">
+                        <div class="texto">
+                            <h3>Laguna Corani</h3>
+                            <p>Un lugar tranquilo para relajarse y disfrutar de deportes acuáticos en medio de montañas.</p>
+                            <a href="" class="menu_item menu-link"
+                    data-url="view/paquetes"
+                    data-ajax="true">Descrube Cochabamba</a>
+                        </div>
 
-                    <a href="la-paz.html">Descubre La Paz</a>
+                        
+                    </div>
                 </div>
+
             </article>
-            <article class="item item-4" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/ILLIMANI.jpg')">
-                <div class="contenido">
-                    <div class="texto">
-                        <h3>El Majestuoso Illimani</h3>
-                        <p>Ciudad Marravilla</p>
-                    </div>
+            <article class="item item-4" style="background-image: url('<?php echo URL_RESOURCES; ?>/images/riberalta.jpeg')">
+                <div class="fondo">
+                    <div class="contenido">
+                        <div class="texto">
+                            <h3>Riberalta: Ciudad de los Castaños</h3>
+                            <p>Conocida por sus ríos y tradición castañera, ideal para un viaje cultural y natural</p>
+                            <a href="" class="menu_item menu-link"
+                    data-url="view/paquetes"
+                    data-ajax="true">Descubre Beni</a>
+                        </div>
 
-                    <a href="la-paz.html">Descubre La Paz</a>
+                        
+                    </div>
                 </div>
+
             </article>
 
             <article class="vides">
-                <div class="video">
-                <iframe src="https://youtu.be/PCyfT2Il_Ng?si=IvfjuR22Oq-IJ96u" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+                
             </article>
         </section>
 
         <?php include __DIR__ . '/partials/footer.php'; ?>
     </div>
 
-    
+
 
 
     <!-- jQuery -->

@@ -351,14 +351,33 @@
     background-size: cover;
 
     .contenido_paquetes {
-        background-color: #31313175;
+        background-color: #3131318e;
         height: 100vh;
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        color: #ffffff
+        color: #ffffff;
+
+        h1{
+            font-size: 3rem;
+        }
+        a {
+            background: #ffffff;
+            color: black;
+            padding: 20px 30px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+
+            &:hover {
+                border: solid 1px #ffffff;
+                background: #ffffff00;
+                color: #ffffff;
+
+            }
+        }
     }
 }
 

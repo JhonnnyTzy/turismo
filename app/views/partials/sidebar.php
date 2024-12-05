@@ -150,16 +150,7 @@
                                             <p>Registrar</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link menu-link" 
-                                        data-ajax="true"
-                                        data-url="view/paquete/listar"
-                                        data-listar = "true"
-                                        data-entidad="listar_paquete">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Listar paquete</p>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
 

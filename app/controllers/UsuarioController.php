@@ -50,7 +50,7 @@ class UsuarioController
             if ($rol == 'ADMIN') {
                 
                 header('Location: ' . HTTP_BASE . '/admin');
-            } else {
+            } else { 
                 header('Location: ' . HTTP_BASE);
             }
         } else {
