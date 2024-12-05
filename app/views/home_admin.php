@@ -3,6 +3,12 @@
 use App\Models\Paquete;
 
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: ' . HTTP_BASE . '/login');
+    exit();
+}
+
+
 
 $paquete = new Paquete();
 $ventas = $paquete->listarVentas();

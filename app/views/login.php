@@ -1,10 +1,10 @@
 <?php
 session_start();
-  if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
 
-    header('Location: '.HTTP_BASE);
-    exit();
-  }
+  header('Location: ' . HTTP_BASE);
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,27 +22,12 @@ session_start();
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>adminlte/dist/css/adminlte.min.css">
 
-  <style>
-    .toast-container {
-      
-      position: fixed;
-      width: 100%;
-      top: 10px;
-      margin: auto;
-      z-index: 10;
-      /* Asegura que el toast esté encima de otros elementos */
-      .toast-header	{
-        background-color: #c94848 !important;
-      }
-    }
-
-  </style>
+  <link rel="stylesheet" href="<?php echo URL_RESOURCES; ?>css/styles.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="">
 
   <?php
-
   if (isset($_SESSION['toast'])):
   ?>
     <div class="toast-container d-flex justify-content-center">
@@ -58,52 +43,43 @@ session_start();
         </div>
       </div>
     </div>
-  <?php endif; 
+  <?php endif;
   session_unset();
   ?>
 
-  <div class="login-box">
-    <div class="login-logo">
-      <h1>Iniciar Sesión</h1>
-    </div>
-    <div class="card">
-      <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        
-        <form action="login" method="post">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Usuario" name="usuario">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+  <div class="login_contenedor">
+    <div class="fondo_login">
+      <div class="formulario_login">
+
+        <div class="redes_contenedor">
+          <div class="redes">
+
+            <div class="redes_titulo">
+              <h2 class="redes_title">JOMI</h2>
+              <h2 class="redes_title name"><b>WASI</b></h2>
             </div>
+            <div class="redes_sociales">
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            </div>
+            
           </div>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña" name="contrasena">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">Remember Me</label>
-              </div>
-            </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-            </div>
-          </div>
-        </form>
-        <p class="mb-0">
-          <a href="view/registrar" class="text-center">Registrar nuevo miembro</a>
-        </p>
+        </div>
+        <div class="form_login">
+          
+          <form action="turismo/login" method="POST" class="formulario">
+          <img src="<?php echo URL_RESOURCES; ?>images/icono_login.jpg" alt="" width="150px">
+          <h2 style="text-align: center; font-size: 3rem;">Login</h2>
+            <input type="text" name="usuario" placeholder="Usuario" class="box_login" required>
+
+            <input type="password" name="contrasena" placeholder="Contraseña" class="box_login" required>
+            <button type="submit" class="btn_login">Iniciar Sesión</button>
+          </form>
+        </div>
       </div>
     </div>
+
   </div>
 
   <!-- jQuery -->

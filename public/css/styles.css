@@ -8,6 +8,130 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* login */
+.login_contenedor{
+    background-image: url(../images/fondo_login.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    .fondo_login {
+        background: linear-gradient(135deg, #bf00ffa9, #cc41f29b, #f1ce40af);
+        background-size: 400% 400%;
+        animation: neon-gradient 10s ease infinite;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .formulario_login{
+            background-color: #ffffff;
+            width: 800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            .redes_contenedor{
+                background-image: url(../images/fondo2_login.jpg);
+                width: 50%;
+                height: 100%;
+                background-size: cover;
+                border-radius: 20px 0px 0px 20px;
+                .redes{
+                    width: 100%;
+                    height: 100%;
+                    background-color: #282828a2;
+                    border-radius: 20px 0px 0px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    .redes_title{
+                        color: #ffffff;
+                        font-size: 5rem;
+                        line-height: 1;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        text-align: center;
+                    }
+                    .name{
+                        color: #e15a16ef;
+                        font-size: 6rem;
+                        
+                    }
+                }
+            }
+            .form_login{
+                width: 50%;
+                height: 100%;
+                .formulario{
+                    padding: 50px;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    .box_login{
+                        all:unset;
+                        width: 100%;
+                        height: 50px;
+                        border: none;
+                        border-bottom: 3px solid #2a2a2a;
+                        background: #ffffff;
+                        margin: 15px 0px;
+                        font-size: 1.2rem;
+                    }
+                    .btn_login{
+                        all:unset;
+                        width: 100%;
+                        height: 50px;
+                        background-color: #e15a16ef;
+                        border-radius: 10px;
+                        margin: 20px 0px;
+                        font-size: 1.5rem;
+                        color: #ffffff;
+                        cursor: pointer;
+                        text-align: center;
+                        &:hover{
+                            background-color: #ffffff;
+                            color: #e15a16ef;
+                            border: 2px solid #e15a16ef;
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+
+    }
+    
+}
+/* Animación del gradiente */
+@keyframes neon-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+
+
+/* fin login*/
+
+
 .toasts-center.fixed{
     position: fixed ;
 }
