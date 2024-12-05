@@ -75,6 +75,12 @@ if (isset($_SESSION['user'])) {
 
             <input type="password" name="contrasena" placeholder="Contraseña" class="box_login" required>
             <button type="submit" class="btn_login">Iniciar Sesión</button>
+            <div class="registrarse">
+              <p>No tienes cuenta?    </p>
+              <a href="view/registrar" class="enlace"> Registrarse</a>
+            </div>
+
+            
           </form>
         </div>
       </div>
