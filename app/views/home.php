@@ -146,11 +146,30 @@ if (isset($_SESSION['user'])) {
                         
                     </div>
                 </div>
-
             </article>
+        </section>
 
-            <article class="vides">
-                
+        <section>
+            <article class="articulo">
+                <div class="imagen">
+                    <img src="<?php echo URL_RESOURCES; ?>/images/valle_luna.jpg" alt="imagen">
+                </div>
+                <div class="contenido">
+                    <h3>Valle de la Luna</h3>
+                    <p>Ubicado a solo 10 km de la ciudad de La Paz, el Valle de la Luna es un impresionante paisaje natural que parece sacado de otro planeta. Este lugar, también conocido como “Valle de las Rocas”, es famoso por sus formaciones geológicas únicas: formaciones rocosas de colores y texturas que han sido modeladas por la erosión a lo largo de miles de años. El resultado es un paisaje surrealista, con formas que recuerdan a un paisaje lunar, de ahí su nombre.
+
+                    El valle es un sitio ideal para los amantes de la naturaleza y la fotografía, donde puedes explorar pequeños senderos, observar la fauna local y disfrutar de vistas panorámicas de la ciudad de La Paz. Además, el Valle de la Luna tiene un importante valor cultural, pues se han encontrado vestigios arqueológicos de antiguos habitantes en la zona.
+
+                    Visitar este lugar es una experiencia única que combina belleza natural, historia y la posibilidad de desconectar de la ciudad. ¡Una parada imprescindible en tu visita a La Paz!</p>
+                </div>
+            </article>
+            <article class="articulo">
+                <div class="imagen"></div>
+                <div></div>
+            </article>
+            <article class="articulo">
+                <div></div>
+                <div></div>
             </article>
         </section>
 

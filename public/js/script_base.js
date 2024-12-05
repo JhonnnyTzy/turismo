@@ -415,7 +415,7 @@ async function recargarTabla(entidad) {
     const html = await response.text();
     const content = document.getElementById("content");
     content.innerHTML = html;
-    reload_script("#content");
+    reload_script("#content", true);
   } catch (error) {
     console.error(error);
   }
