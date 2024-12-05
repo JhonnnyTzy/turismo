@@ -162,6 +162,7 @@ function reload_script(dom) {
           });
       }else{
         alert("Debes iniciar sesion para comprar");
+        /*dafasdfasdfadsf */
       }
     });
 
