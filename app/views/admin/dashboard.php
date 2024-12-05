@@ -104,14 +104,7 @@
                                     data-target="#modal-default"
                                     data-action="editar"
                                     data-entidad="destino"
-                                    data-info='<?= json_encode($venta) ?>'>Editar</a>
-                                <a href="#"
-                                    class="btn btn-danger btn-action"
-                                    data-toggle="modal"
-                                    data-target="#modal-default"
-                                    data-action="eliminar"
-                                    data-entidad="destino"
-                                    data-info='<?= json_encode($venta) ?>'>Eliminar</a>
+                                    data-info='<?= json_encode($venta) ?>'>Ver más</a>
                             </td>
 
                         </tr>

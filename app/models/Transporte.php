@@ -12,7 +12,7 @@ class Transporte
 
     public function registrarTransporte($data)
     {
-        $sql = "INSERT INTO transporte (tipo,codigo, estado, capacidad, imagenes) VALUES (:tipo, :codigo, :estado, :capacidad, :imagenes)";
+        $sql = "INSERT INTO transporte (tipo,codigo, estado, capacidad, imagenes, departamento) VALUES (:tipo, :codigo, :estado, :capacidad, :imagenes, :departamento)";
         
         $imagenes = json_encode($data['imagenes']);
         
@@ -22,6 +22,7 @@ class Transporte
         $stmt->bindParam(':estado', $data['estado']);
         $stmt->bindParam(':capacidad', $data['capacidad']);
         $stmt->bindParam(':imagenes', $imagenes);
+        $stmt->bindParam(':departamento', $data['departamento']);
         return $stmt->execute();
     }
     public function listarTransportes()

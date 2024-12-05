@@ -8,6 +8,13 @@ header("Pragma: no-cache");
 
 session_start();
 
+if (isset($_SESSION['user'])) {
+    if($_SESSION['user']['rol'] == 'ADMIN'){
+        header('Location: ' . HTTP_BASE . '/admin');
+        exit();
+    } 
+}
+
 ?>
 
 <!DOCTYPE html>

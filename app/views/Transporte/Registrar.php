@@ -38,6 +38,22 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="departamento">Departamento</label>
+                                <select class="form-control" name="departamento" id="departamento">
+                                    <option value="LA PAZ">LA PAZ</option>
+                                    <option value="SANTA CRUZ">SANTA CRUZ</option>
+                                    <option value="BENI">BENI</option>
+                                    <option value="CHUQUISACA">CHUQUISACA</option>
+                                    <option value="COCHABAMBA">COCHABAMBA</option>
+                                    <option value="ORURO">ORURO</option>
+                                    <option value="PANDO">PANDO</option>
+                                    <option value="POTOSI">POTOSI</option>
+                                    <option value="TARIJA">TARIJA</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="row">

@@ -150,8 +150,8 @@ function reload_script(dom) {
             formData.append("codigo_secreto", codigo_secreto);
             enviar_solicitud(url, 'POST', formData, false, function (result) {
               if (result.success) {
-
-
+                alert(result.message);
+                window.location.reload();
               } else {
 
               }
@@ -160,6 +160,18 @@ function reload_script(dom) {
             $("#modal-default").modal("hide");
             $(".modal-backdrop").remove(); // Limpia el fondo si es necesario
           });
+      }else{
+        alert("Debes iniciar sesion para comprar");
+      }
+    });
+
+    contenedor.on('click', '#btn_reserva', function (e) {
+      e.preventDefault();
+
+      const id_user = $(this).data("iduser");
+
+      if (!id_user == 0) {
+        alert("Contactarse al numero: 69865195");
       }else{
         alert("Debes iniciar sesion para comprar");
       }

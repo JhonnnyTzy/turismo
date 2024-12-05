@@ -24,7 +24,7 @@ foreach ($imagen_decodificada_a as $key => $value) {
 <div class="contenedor_compra">
 
     <div class="contenedor_main">
-        <h2>DESTINO</h2>
+        <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">PAQUETE: <?php echo htmlspecialchars($paquete['p_nombre']); ?></h2>
         <div class="contenedor_partes">
 
             <div class="parte_carousel">
@@ -75,7 +75,7 @@ foreach ($imagen_decodificada_a as $key => $value) {
             </div>
         </div>
 
-        <h2>ALOJAMIENTO</h2>
+        <h2 style="text-align: center; font-weight: bold; margin-top: 20px;">HOSPEDAJE</h2>
         <div class="contenedor_partes">
             <div class="parte_info">
                 <div class="destino_mas_info">
@@ -136,7 +136,9 @@ foreach ($imagen_decodificada_a as $key => $value) {
             <p class="detalles precio"><?php echo htmlspecialchars((int)$paquete['p_precio_total']); ?>bs </p>
             
             <div class="botones">
-                <a href="" class="item reserva" id="btn_reserva">RESERVAR</a>
+                <a href="" class="item reserva" id="btn_reserva" 
+                data-iduser="<?php  echo (isset($_SESSION['user'])) ? htmlspecialchars($_SESSION['user']['id']): 0; ?>">RESERVAR</a>
+                
                 <a href="" class="item compra" 
                 id="btn_comprar"
                 data-idpaquete = "<?php echo $paquete['paquete_id']; ?>"
