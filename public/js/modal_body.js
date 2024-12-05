@@ -11,7 +11,7 @@ function configurarBodyModal(entidad, datos, esEditar) {
                   </div>
                   <div class="form-group col-md-6">
                       <label for="tipo">Tipo</label>
-                      <select class="form-control" name="tipo" id="tipo">
+                      <select class="form-control" name="tipo" id="tipo" ${!esEditar ? "readonly" : ""}>
                           <option value="AUTOBUS">AUTOBUS</option>
                           <option value="AVION">AVION</option>
                           <option value="BARCO">BARCO</option>
@@ -24,18 +24,18 @@ function configurarBodyModal(entidad, datos, esEditar) {
                   
                   <div class="form-group col-md-6">
                       <label for="capacidad">Capacidad</label>
-                      <input type="number" name="capacidad" class="form-control" id="capacidad" placeholder="capacidad" value="${datos.capacidad}" />
+                      <input type="number" name="capacidad" class="form-control" id="capacidad" placeholder="capacidad" value="${datos.capacidad}" ${!esEditar ? "readonly" : ""} />
                   </div>
                   
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="codigo">Codigo</label>
-                      <input type="text" name="codigo" class="form-control" id="codigo" placeholder="codigo" value="${datos.codigo}" />
+                      <input type="text" name="codigo" class="form-control" id="codigo" placeholder="codigo" value="${datos.codigo}" ${!esEditar ? "readonly" : ""} />
                   </div>
                   <div class="form-group col-md-6">
                       <label for="estado">Estado</label>
-                      <select class="form-control" name="estado" id="estado">
+                      <select class="form-control" name="estado" id="estado" ${!esEditar ? "readonly" : ""} >
                           <option value="DISPONIBLE">DISPONIBLE</option>
                           <option value="RESERVADO">RESERVADO</option>
                           <option value="MANTENIMIENTO">MANTENIMIENTO</option>
@@ -60,52 +60,52 @@ function configurarBodyModal(entidad, datos, esEditar) {
                   </div>
                   <div class="form-group col-md-6">
                       <label for="nombre">Nombre</label>
-                      <input type="text" class="form-control" name="nombre" id="nombre" value="${datos.nombre}" readonly>
+                      <input type="text" class="form-control" name="nombre" id="nombre" value="${datos.nombre}" ${!esEditar ? "readonly" : ""} >
                   </div>
                   
               </div>
               <div class="form-row">
                   <div class="form-group col-md-12">
                       <label for="descripcion">Descripcion</label>
-                      <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="descripcion" value="${datos.descripcion}" />
+                      <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="descripcion" value="${datos.descripcion}" ${!esEditar ? "readonly" : ""}  />
                   </div>
               </div>
   
               <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="departamento">Departamento</label>
-                      <input type="text" name="departamento" class="form-control" id="departamento" placeholder="departamento" value="${datos.departamento}" />
+                      <input type="text" name="departamento" class="form-control" id="departamento" placeholder="departamento" value="${datos.departamento}"  ${!esEditar ? "readonly" : ""} />
                   </div>
                   <div class="form-group col-md-6">
                       <label for="ubicacion">Ubicacion</label>
-                      <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="ubicacion" value="${datos.ubicacion}" />
+                      <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="ubicacion" value="${datos.ubicacion}" ${!esEditar ? "readonly" : ""} />
                   </div>
               </div>
   
               <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="temporada">Temporada Recomendada</label>
-                      <input type="text" name="temporada" class="form-control" id="temporada" placeholder="temporada" value="${datos.temporada_recomendada}" />
+                      <input type="text" name="temporada" class="form-control" id="temporada" placeholder="temporada" value="${datos.temporada_recomendada}" ${!esEditar ? "readonly" : ""} />
                   </div>
                   <div class="form-group col-md-6">
                   <label for="clima">Clima</label>
-                      <input type="text" name="clima" class="form-control" id="clima" placeholder="clima" value="${datos.clima}" />
+                      <input type="text" name="clima" class="form-control" id="clima" placeholder="clima" value="${datos.clima}" ${!esEditar ? "readonly" : ""}  />
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-12">
                       <label for="coordenadas">Coordenadas</label>
-                      <input type="text" name="coordenadas" class="form-control" id="coordenadas" placeholder="coordenadas" value="${datos.coordenadas}" />
+                      <input type="text" name="coordenadas" class="form-control" id="coordenadas" placeholder="coordenadas" value="${datos.coordenadas}" ${!esEditar ? "readonly" : ""}  />
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="restricciones">Restricciones</label>
-                      <textarea name="restricciones" class="form-control" id="restricciones" placeholder="restricciones">${datos.restricciones}</textarea>
+                      <textarea name="restricciones" class="form-control" id="restricciones" placeholder="restricciones" ${!esEditar ? "readonly" : ""}>${datos.restricciones}</textarea>
                   </div>
                   <div class="form-group col-md-6">
                       <label for="atracciones">Atracciones</label>
-                      <textarea name="atracciones" class="form-control" id="atracciones" placeholder="atracciones">${datos.atracciones}</textarea>
+                      <textarea name="atracciones" class="form-control" id="atracciones" placeholder="atracciones" ${!esEditar ? "readonly" : ""}>${datos.atracciones}</textarea>
                   </div>
               </div>
           </form>
@@ -136,7 +136,7 @@ function configurarBodyModal(entidad, datos, esEditar) {
 
                   <div class="form-group col-md-6">
                         <label for="departamento">Departamento</label>
-                            <select class="form-control" name="departamento" id="departamento">
+                            <select class="form-control" name="departamento" id="departamento" ${!esEditar ? "readonly" : ""}>
                                 <option value="LA PAZ">LA PAZ</option>
                                 <option value="SANTA CRUZ">SANTA CRUZ</option>
                                 <option value="BENI">BENI</option>
