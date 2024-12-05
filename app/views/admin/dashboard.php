@@ -82,7 +82,6 @@
                     <th>Transporte</th>
                     <th>Precio</th>
                     <th>Codigo</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,16 +96,6 @@
                             <td><?= $venta['transporte'] ?></td>
                             <td><?= $venta['precio'] ?></td>
                             <td><?= $venta['codigo_secreto'] ?></td>
-                            <td class="d-flex justify-content-around">
-                                <a href="#"
-                                    class="btn btn-warning btn-action"
-                                    data-toggle="modal"
-                                    data-target="#modal-default"
-                                    data-action="editar"
-                                    data-entidad="destino"
-                                    data-info='<?= json_encode($venta) ?>'>Ver más</a>
-                            </td>
-
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -125,7 +114,6 @@
                     <th>Transporte</th>
                     <th>Precio</th>
                     <th>Codigo</th>
-                    <th>Acciones</th>
                 </tr>
             </tfoot>
         </table>

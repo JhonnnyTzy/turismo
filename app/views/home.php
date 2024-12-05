@@ -149,8 +149,11 @@ if (isset($_SESSION['user'])) {
             </article>
         </section>
 
-        <section>
+        <h2 style="text-align: center; font-size: 5rem; margin-top: 50px"><b>DESTINOS POPULARES</b></h2>
+
+        <section class="articulos">
             <article class="articulo">
+
                 <div class="imagen">
                     <img src="<?php echo URL_RESOURCES; ?>/images/valle_luna.jpg" alt="imagen">
                 </div>
@@ -164,12 +167,23 @@ if (isset($_SESSION['user'])) {
                 </div>
             </article>
             <article class="articulo">
-                <div class="imagen"></div>
-                <div></div>
+                
+                <div class="contenido">
+                    <h3>Parque Nacional Amboró (Santa Cruz)</h3>
+                    <p>El Parque Nacional Amboró es una joya natural en el corazón de Bolivia, conocido por su rica biodiversidad y hermosos paisajes. Con una extensión de más de 4,000 km², este parque es hogar de una gran variedad de flora y fauna, incluyendo especies endémicas y en peligro de extinción. El parque se caracteriza por su transición de ecosistemas, desde bosques tropicales hasta montañas andinas, lo que lo convierte en un destino ideal para ecoturismo y senderismo. Los visitantes pueden explorar sus senderos, disfrutar de las cascadas y observar aves en uno de los hotspots más importantes para la observación de aves en el país. Un lugar perfecto para los amantes de la naturaleza.</p>
+                </div>
+                <div class="imagen">
+                    <img src="<?php echo URL_RESOURCES; ?>/images/cataratas.jpeg" alt="imagen">
+                </div>
             </article>
             <article class="articulo">
-                <div></div>
-                <div></div>
+                <div class="imagen">
+                    <img src="<?php echo URL_RESOURCES; ?>/images/cristo_concordia.jpg" alt="imagen">
+                </div>
+                <div class="contenido">
+                    <h3>Cristo de la Concordia (Cochabamba)</h3>
+                    <p>El Cristo de la Concordia es una de las estatuas más grandes de Sudamérica, con una altura de 34 metros, superando en tamaño al famoso Cristo Redentor de Río de Janeiro. Situado en la cima del cerro San Pedro, el Cristo de la Concordia no solo es un símbolo religioso, sino también un impresionante mirador que ofrece vistas panorámicas de la ciudad de Cochabamba. Los visitantes pueden llegar a la estatua por una carretera empinada o tomar un teleférico para disfrutar de la espectacular vista mientras ascienden. Es un lugar perfecto para una experiencia espiritual y una vista inigualable de la ciudad.</p>
+                </div>
             </article>
         </section>
 
