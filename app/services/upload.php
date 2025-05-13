@@ -1,6 +1,4 @@
 <?php
-
-
 if (isset($_POST['entidad'])) {
     // Ruta donde se guardarán los archivos
     $entidad = $_POST['entidad'];
@@ -40,7 +38,6 @@ function convertirAWebP($rutaOrigen, $rutaDestino, $calidad = 80)
         imagepalettetotruecolor($imagen);
         imagesavealpha($imagen, true);
     }
-
     $resultado = imagewebp($imagen, $rutaDestino, $calidad);
     imagedestroy($imagen);
     return $resultado;

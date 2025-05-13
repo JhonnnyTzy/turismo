@@ -16,7 +16,6 @@
                         </div>
 
                         <div class="form-row">
-
                             <div class="form-group col-md-6">
                                 <label for="tipo">Tipo</label>
                                 <select class="form-control" name="tipo" id="tipo">
@@ -24,9 +23,7 @@
                                     <option value="CABAÑA">Cabaña</option>
                                     <option value="HOSTAL">Hostal</option>
                                     <option value="ALOJAMIENTO">Alojamiento</option>
-
                                 </select>
-
                             </div>
 
                             <div class="form-group col-md-6">
