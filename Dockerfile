@@ -1,10 +1,10 @@
 FROM php:8.1-apache
 
-# Copia todos los archivos al servidor
+# Habilitar mod_rewrite
+RUN a2enmod rewrite
+
+# Copiar el código
 COPY . /var/www/html/
 
-# Da permisos a los archivos
+# Cambiar permisos
 RUN chown -R www-data:www-data /var/www/html
-
-# Expone el puerto 80 para acceso web
-EXPOSE 80
