@@ -11,8 +11,8 @@ define('DB_PASS', '');
 
 // Rutas base
 define("RUTA_BASE", $_SERVER['DOCUMENT_ROOT'] . "/");
-define("HTTP_BASE", "http://localhost/turismo");
+define("HTTP_BASE", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST']);
 define("ROOT_APP", $_SERVER['DOCUMENT_ROOT'] . "/turismo/app/");
-define("ROOT_DIR,", $_SERVER['DOCUMENT_ROOT'] . "/turismo/");
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT'] . "/turismo/");
 define("URL_RESOURCES", HTTP_BASE . "/public/");
 define("URL_RESOURCES_ADM", HTTP_BASE . "/public/adminlte/");
