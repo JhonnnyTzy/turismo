@@ -1,7 +1,5 @@
 <?php
-// Configuración general del sistema
 
-// Controlador y acción por defecto
 define("CONTROLADOR_DEFECTO", "Usuarios");
 define("ACCION_DEFECTO", "index");
 
@@ -11,16 +9,10 @@ define('DB_NAME', 'turismo');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-// Rutas base del sistema
+// Rutas base
 define("RUTA_BASE", $_SERVER['DOCUMENT_ROOT'] . "/");
-
-// URLs base del sistema
-define("HTTP_BASE", "http://localhost/turismo");
-
-// Rutas absolutas del sistema
+define("HTTP_BASE", "http://" . $_SERVER['HTTP_HOST'] . "/turismo");
 define("ROOT_APP", $_SERVER['DOCUMENT_ROOT'] . "/turismo/app/");
-define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT'] . "/turismo/"); // Corregido: eliminada la coma mal ubicada
-
-// URLs de recursos públicos
+define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT'] . "/turismo/");
 define("URL_RESOURCES", HTTP_BASE . "/public/");
 define("URL_RESOURCES_ADM", HTTP_BASE . "/public/adminlte/");
