@@ -1,10 +1,10 @@
 RewriteEngine On
 Options -Indexes
 
-# Establecer la base del directorio para las reescrituras
-RewriteBase /turismo/
+# Establecer la base del directorio raíz
+RewriteBase /
 
-# Redireccionar todas las solicitudes a index.php excepto para archivos y directorios reales
+# Redirigir todo a index.php excepto archivos y carpetas existentes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
